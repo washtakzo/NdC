@@ -4,9 +4,8 @@ const Header = () => {
   const [scrollY, setScrollY] = useState(0);
 
   const opacity = scrollY / 2 / 100;
-  const headerTranslation = "-" + (scrollY / 2 <= 60 ? scrollY / 2 : 60) + "%";
+  const headerTranslation = "-" + (scrollY / 2 <= 54 ? scrollY / 2 : 54) + "%";
   const headerHeigth = (200 - scrollY >= 80 ? 200 - scrollY : 80) + "px";
-  console.log(headerHeigth);
 
   const scrollListener = () => {
     setScrollY(window.scrollY);
@@ -26,17 +25,22 @@ const Header = () => {
         className="absolute h-full w-full bg-primary -z-10"
         style={{ opacity: opacity }}
       />
-      <div className=" py-2 px-6 lg:px-28" style={{ height: headerHeigth }}>
+      <div
+        className="flex flex-col py-2 px-6 lg:px-28"
+        style={{ height: headerHeigth }}
+      >
         <div
           id="header_translate"
           style={{ transform: `translateY(${headerTranslation})` }}
         >
-          <h1 className="font-semibold text-3xl mb-8">Noce de coton</h1>
-          <ul className="inline-flex space-x-8">
-            <li>Our Story</li>
-            <li>Shop</li>
-            <li>Blog</li>
-            <li>Contact Us</li>
+          <h1 className="inline-flex font-semibold text-3xl mb-8 cursor-pointer">
+            Noce de coton
+          </h1>
+          <ul className="flex space-x-8">
+            <li className="header__liste_item">Our Story</li>
+            <li className="header__liste_item">Shop</li>
+            <li className="header__liste_item">Blog</li>
+            <li className="header__liste_item">Contact Us</li>
           </ul>
         </div>
         <div className="absolute top-6 right-6 lg:right-28">
@@ -49,7 +53,7 @@ const Header = () => {
                   viewBox="0 0 24 24"
                   strokeWidth={1.5}
                   stroke="currentColor"
-                  className="w-6 h-6"
+                  className="header__liste_item w-6 h-6"
                 >
                   <path
                     strokeLinecap="round"
@@ -67,7 +71,7 @@ const Header = () => {
                   viewBox="0 0 24 24"
                   strokeWidth={1.5}
                   stroke="currentColor"
-                  className="w-6 h-6"
+                  className="header__liste_item w-6 h-6"
                 >
                   <path
                     strokeLinecap="round"
