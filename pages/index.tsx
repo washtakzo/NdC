@@ -12,8 +12,14 @@ export default function Home() {
       </Head>
 
       <AnimatedBackground />
-      <main className="">
+      <main>
         <Header />
+        {/* TEST DIV */}
+        <div className="h-[200vh] w-8 mt-44">
+          <div className="w-80 h-80 bg-red-600 my-12">test</div>
+          <div className="w-80 h-80 bg-red-600 my-12">azerty</div>
+          <div className="w-80 h-80 bg-red-600 my-12">123132</div>
+        </div>
       </main>
     </>
   );

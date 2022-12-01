@@ -17,6 +17,15 @@ a {
 * {
   box-sizing: border-box;
 }
+/* @media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+  body {
+    color: white;
+    background: black;
+  }
+} */
 
 .shape_01 {
   transition: all 0.2s linear;
@@ -53,12 +62,8 @@ a {
   }
 }
 
-/* @media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
+@layer components {
+  .header__liste_item {
+    @apply hover:text-third cursor-pointer hover:scale-105 transition-all duration-200;
   }
-  body {
-    color: white;
-    background: black;
-  }
-} */
+}
