@@ -18,7 +18,42 @@ a {
   box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
+.shape_01 {
+  transition: all 0.2s linear;
+  animation: alternate;
+  animation-name: animate-square;
+  animation-duration: 30s;
+  animation-iteration-count: infinite;
+}
+.shape_02 {
+  transition: all 0.2s linear;
+  animation: alternate;
+  animation-name: animate-circle;
+  animation-duration: 30s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes animate-square {
+  0% {
+    transform: rotate(20deg) translateX(30vw) translateY(80vh);
+  }
+
+  100% {
+    transform: rotate(60deg) translateX(20vw) translateY(-20vh);
+  }
+}
+
+@keyframes animate-circle {
+  0% {
+    transform: translateX(60%) translateY(-20%);
+  }
+
+  100% {
+    transform: translateX(0%) translateY(80vh);
+  }
+}
+
+/* @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
   }
@@ -26,4 +61,4 @@ a {
     color: white;
     background: black;
   }
-}
+} */
