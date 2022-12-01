@@ -15,7 +15,7 @@ const Header = () => {
   }, []);
 
   return (
-    <div className="bg-red-200 w-full">
+    <div className="fixed top-0 z-10 w-full">
       <div className="flex justify-between py-4 px-12">
         <div>
           <h1 className="font-semibold text-3xl mb-8">Noce de coton</h1>
@@ -32,7 +32,6 @@ const Header = () => {
           <li>count</li>
         </ul>
       </div>
-      <div className="h-[200vh] w-8"></div>
     </div>
   );
 };
