@@ -26,7 +26,7 @@ a {
     background: black;
   }
 } */
-
+/* ----------------------------------HEADER--------------------- */
 .shape_01 {
   transition: all 0.2s linear;
   animation: alternate;
@@ -67,3 +67,5 @@ a {
     @apply hover:text-third cursor-pointer hover:scale-105 transition-all duration-200;
   }
 }
+
+/* ----------------------------------Section 1--------------------- */
