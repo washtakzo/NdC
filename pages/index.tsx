@@ -4,6 +4,7 @@ import Categorie from "../components/Categorie";
 import Header from "../components/Header";
 import LargeButton from "../components/LargeButton";
 import Paralax from "../components/Paralax";
+import PopularProduct from "../components/PopularProduct";
 import AnimatedBackground from "../components/UI/AnimatedBackground";
 
 export default function Home() {
@@ -89,11 +90,31 @@ export default function Home() {
             scrollStartingPoint={3660}
           />
         </section>
-        <div className="h-[200vh] w-8">
-          <div className="w-80 h-80 bg-red-600 my-12">test</div>
-          <div className="w-80 h-80 bg-red-600 my-12">azerty</div>
-          <div className="w-80 h-80 bg-red-600 my-12">123132</div>
-        </div>
+        <section
+          className="p-4 text-center bg-secondary border-t-[1px] border-b-[1px] border-black
+        "
+        >
+          <h2 className="font-serif text-5xl leading-[60px] my-8">
+            Popular Products
+          </h2>
+          <div className="grid md:grid-cols-2 space-x-14">
+            <PopularProduct
+              image="https://assets.website-files.com/601835c0c88eb62d2fa657a1/60199122d5c8861512defdfc_liana-mikah-jbqX046ww8I-unsplash-p-500.jpeg"
+              title="Vegan Leather Blue Bag"
+              price={200}
+            />
+            <PopularProduct
+              image="https://assets.website-files.com/601835c0c88eb62d2fa657a1/6019880417e04655dd17e50b_leisara-imZnpDXSNVA-unsplash.jpg"
+              title="Vegan Leather Blue Bag"
+              price={200}
+            />
+            <PopularProduct
+              image="https://assets.website-files.com/601835c0c88eb62d2fa657a1/6019880417e04655dd17e50b_leisara-imZnpDXSNVA-unsplash.jpg"
+              title="Vegan Leather Blue Bag"
+              price={200}
+            />
+          </div>
+        </section>
       </main>
     </>
   );
