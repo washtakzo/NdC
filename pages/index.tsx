@@ -1,8 +1,23 @@
 import Head from "next/head";
+import { useEffect, useState } from "react";
 import Header from "../components/Header";
+import Paralax from "../components/Paralax";
 import AnimatedBackground from "../components/UI/AnimatedBackground";
 
 export default function Home() {
+  const [scrollY, setScrollY] = useState(0);
+
+  const scrollListener = () => {
+    setScrollY(window.scrollY);
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", scrollListener);
+    return () => {
+      removeEventListener("scroll", scrollListener);
+    };
+  }, []);
+
   return (
     <>
       <Head>
@@ -23,12 +38,21 @@ export default function Home() {
               alt=""
             />
           </div>
-          <div className="mt-20">
-            <img
-              className="aspect-[12/16] object-cover min-h-[520px] h-[50vw]"
-              src="https://assets.website-files.com/601835c0c88eb62d2fa657a1/60199122d5c8861512defdfc_liana-mikah-jbqX046ww8I-unsplash-p-500.jpeg"
-              alt=""
-            />
+          <div className="mt-20 relative">
+            <Paralax
+              scrollY={scrollY}
+              paralaxSpeed={40}
+              scrollStartingPoint={100}
+            >
+              <img
+                className="aspect-[12/16] object-cover min-h-[520px] h-[50vw]"
+                src="https://assets.website-files.com/601835c0c88eb62d2fa657a1/60199122d5c8861512defdfc_liana-mikah-jbqX046ww8I-unsplash-p-500.jpeg"
+                alt=""
+              />
+            </Paralax>
+            <h2 className="top-[25%] left-[25%] absolute text-5xl">
+              Framy Is A Fashion Lifestyle Template
+            </h2>
           </div>
         </section>
         <div className="h-[200vh] w-8">

@@ -69,3 +69,13 @@ a {
 }
 
 /* ----------------------------------Section 1--------------------- */
+.paralax {
+  height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  perspective: 10px;
+}
+
+.paralax_wrapper {
+  transform-style: preserve-3d;
+}
