@@ -1,6 +1,7 @@
 import Head from "next/head";
 import { useEffect, useState } from "react";
 import Header from "../components/Header";
+import LargeButton from "../components/LargeButton";
 import Paralax from "../components/Paralax";
 import AnimatedBackground from "../components/UI/AnimatedBackground";
 
@@ -58,7 +59,7 @@ export default function Home() {
               alt=""
             />
           </Paralax>
-          <h2 className="top-[50%] left-[25%] absolute text-5xl">
+          <h2 className="top-[44%] lg:top-[25%] xl:top-[5%] left-[25%] absolute text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl max-w-[600px] font-serif">
             Framy Is A Fashion Lifestyle Template
           </h2>
           <Paralax
@@ -67,9 +68,7 @@ export default function Home() {
             paralaxSpeed={1500}
             scrollStartingPoint={1}
           >
-            <button className="w-[80%] mx-auto bg-red-200 block">
-              SHOP COLLECTIONS
-            </button>
+            <LargeButton>SHOP COLLECTIONS</LargeButton>
           </Paralax>
         </section>
         <div className="h-[200vh] w-8">
