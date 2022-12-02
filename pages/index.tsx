@@ -6,6 +6,7 @@ import AnimatedBackground from "../components/UI/AnimatedBackground";
 
 export default function Home() {
   const [scrollY, setScrollY] = useState(0);
+  console.log(scrollY);
 
   const scrollListener = () => {
     setScrollY(window.scrollY);
@@ -27,33 +28,42 @@ export default function Home() {
       </Head>
 
       <AnimatedBackground />
-      <main className="pt-44">
+      <main className="pt-52">
         <Header />
         {/* TEST DIV */}
-        <section>
+        <section className="relative max-w-[2000px] mx-auto">
           <div className="flex justify-end px-4">
             <img
-              className="aspect-[9/16] object-cover min-h-[340px] h-[30vw]"
+              className="aspect-[9/16] object-cover min-h-[340px] h-[30vw]  max-h-[400px]"
               src="https://assets.website-files.com/601835c0c88eb62d2fa657a1/6019880417e04655dd17e50b_leisara-imZnpDXSNVA-unsplash.jpg"
               alt=""
             />
           </div>
-          <div className="mt-20 relative">
-            <Paralax
-              scrollY={scrollY}
-              paralaxSpeed={40}
-              scrollStartingPoint={100}
-            >
-              <img
-                className="aspect-[12/16] object-cover min-h-[520px] h-[50vw]"
-                src="https://assets.website-files.com/601835c0c88eb62d2fa657a1/60199122d5c8861512defdfc_liana-mikah-jbqX046ww8I-unsplash-p-500.jpeg"
-                alt=""
-              />
-            </Paralax>
-            <h2 className="top-[25%] left-[25%] absolute text-5xl">
-              Framy Is A Fashion Lifestyle Template
-            </h2>
-          </div>
+          <Paralax
+            className="mt-40 relative"
+            scrollY={scrollY}
+            paralaxSpeed={40}
+            scrollStartingPoint={1}
+          >
+            <img
+              className="aspect-[12/16] object-cover min-h-[520px] max-h-[1600px] h-[50vw]"
+              src="https://assets.website-files.com/601835c0c88eb62d2fa657a1/60199122d5c8861512defdfc_liana-mikah-jbqX046ww8I-unsplash-p-500.jpeg"
+              alt=""
+            />
+          </Paralax>
+          <h2 className="top-[50%] left-[25%] absolute text-5xl">
+            Framy Is A Fashion Lifestyle Template
+          </h2>
+          <Paralax
+            className="relative"
+            scrollY={scrollY}
+            paralaxSpeed={1500}
+            scrollStartingPoint={1}
+          >
+            <button className="w-[80%] mx-auto bg-red-200 block">
+              SHOP COLLECTIONS
+            </button>
+          </Paralax>
         </section>
         <div className="h-[200vh] w-8">
           <div className="w-80 h-80 bg-red-600 my-12">test</div>
