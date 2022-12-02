@@ -7,7 +7,7 @@ const Categorie = () => {
       <div className="space-y-4 sm:h-[300px] flex flex-col justify-end">
         <h3 className="font-serif  text-2xl sm:text-3xl max-w-[600px]">
           You can choose which collections you want to be featured on the main
-          page. It's very simple, you can do it just in a matter of seconds!
+          page. Its very simple, you can do it just in a matter of seconds!
         </h3>
         <p className="text-third text-xs sm:text-sm md:text-lg">
           Shop Collection
