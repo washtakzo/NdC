@@ -37,7 +37,9 @@ const Header = () => {
             Noce de coton
           </h1>
           <ul className="flex space-x-8">
-            <li className="header__liste_item">Our Story</li>
+            <li className="header__liste_item sm:text-green-500 md:text-blue-500 lg:text-orange-500 xl:text-red-500">
+              Our Story
+            </li>
             <li className="header__liste_item">Shop</li>
             <li className="header__liste_item">Blog</li>
             <li className="header__liste_item">Contact Us</li>

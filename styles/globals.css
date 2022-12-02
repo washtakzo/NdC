@@ -25,7 +25,7 @@ a {
     background: black;
   }
 } */
-/* ----------------------------------HEADER--------------------- */
+/* --------------------------------------------------------------HEADER------------------------------------------------- */
 .shape_01 {
   transition: all 0.2s linear;
   animation: alternate;
@@ -67,7 +67,7 @@ a {
   }
 }
 
-/* ----------------------------------Section 1--------------------- */
+/* --------------------------------------------------------------Section 1------------------------------------------------- */
 .paralax {
   height: 100vh;
   overflow-y: auto;
@@ -77,4 +77,110 @@ a {
 
 .paralax_wrapper {
   transform-style: preserve-3d;
+}
+
+/* --------------------------------------------------------------Section 3 Categories ------------------------------------------------- */
+
+.categorie {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 90vh;
+  padding: 0 8px;
+}
+
+.categorie__title {
+}
+
+.categorie__description_container > h3 {
+  max-width: 600px;
+}
+
+.categorie__image {
+}
+.categorie__image > img {
+  max-height: 400px;
+  z-index: -1;
+}
+
+/* Cancel paralax effect when on Mobile */
+@media screen and (max-width: 768px) {
+  .categorie__image {
+    transform: none !important;
+  }
+}
+
+/* SM-424px */
+@media screen and (min-width: 424px) {
+  .categorie {
+    padding: 0 24px;
+  }
+  .categorie__title {
+    font-size: 10vw;
+    line-break: anywhere;
+    /* background-color: red; */
+  }
+  .categoriesss__title {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    height: 300px;
+    font-size: 5vw;
+  }
+}
+
+/* MD-768px */
+@media screen and (min-width: 768px) {
+  .categorie {
+    position: relative;
+  }
+
+  .categorie__title {
+    position: absolute;
+    right: 22%;
+    top: 10%;
+    z-index: 1;
+    max-width: 20vw;
+    line-break: anywhere;
+  }
+
+  .categorie__description_container {
+    position: absolute;
+    bottom: 20%;
+    left: 5%;
+  }
+
+  .categorie__image {
+    position: absolute;
+    right: 5%;
+    top: 10%;
+  }
+  .categorie__image {
+    transform: style !important;
+  }
+  .categorie__image > img {
+    height: 44vw;
+    max-height: 500px;
+  }
+}
+/* LG-1280px */
+@media screen and (min-width: 1280px) {
+  .categorie {
+    color: rgb(0, 255, 26);
+  }
+
+  .categorie__title {
+    right: 35%;
+    top: 10%;
+  }
+  .categorie__image > img {
+    height: 60vw;
+    max-height: 1200px;
+  }
+}
+/* XL-1640 */
+@media screen and (min-width: 1640px) {
+  .categorie {
+    color: rgb(235, 219, 0);
+  }
 }
