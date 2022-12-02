@@ -33,7 +33,7 @@ const Header = () => {
           id="header_translate"
           style={{ transform: `translateY(${headerTranslation})` }}
         >
-          <h1 className="inline-flex font-semibold text-3xl mb-8 cursor-pointer">
+          <h1 className="inline-flex font-semibold text-3xl mb-8 cursor-pointer font-serif">
             Noce de coton
           </h1>
           <ul className="flex space-x-8">
