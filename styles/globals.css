@@ -98,6 +98,7 @@ a {
 
 .categorie__image {
 }
+
 .categorie__image > img {
   max-height: 400px;
   z-index: -1;
@@ -133,6 +134,7 @@ a {
 @media screen and (min-width: 768px) {
   .categorie {
     position: relative;
+    height: 120vh;
   }
 
   .categorie__title {
@@ -160,27 +162,24 @@ a {
   }
   .categorie__image > img {
     height: 44vw;
-    max-height: 500px;
+    max-height: 600px;
   }
 }
 /* LG-1280px */
 @media screen and (min-width: 1280px) {
   .categorie {
-    color: rgb(0, 255, 26);
   }
 
   .categorie__title {
-    right: 35%;
+    right: 28%;
     top: 10%;
   }
   .categorie__image > img {
-    height: 60vw;
     max-height: 1200px;
   }
 }
 /* XL-1640 */
 @media screen and (min-width: 1640px) {
   .categorie {
-    color: rgb(235, 219, 0);
   }
 }

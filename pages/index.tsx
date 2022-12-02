@@ -73,7 +73,21 @@ export default function Home() {
           </h2>
         </section>
         <section>
-          <Categorie scrollY={scrollY} />
+          <Categorie
+            scrollY={scrollY}
+            paralaxSpeed={40}
+            scrollStartingPoint={1260}
+          />
+          <Categorie
+            scrollY={scrollY}
+            paralaxSpeed={40}
+            scrollStartingPoint={2460}
+          />
+          <Categorie
+            scrollY={scrollY}
+            paralaxSpeed={40}
+            scrollStartingPoint={3660}
+          />
         </section>
         <div className="h-[200vh] w-8">
           <div className="w-80 h-80 bg-red-600 my-12">test</div>
