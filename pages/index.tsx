@@ -34,20 +34,20 @@ export default function Home() {
         <section className="relative max-w-[2000px] mx-auto">
           <div className="flex justify-end px-4">
             <img
-              className="aspect-[9/16] object-cover min-h-[340px] h-[30vw]  max-h-[400px]"
+              className="aspect-[9/16] object-cover min-h-[340px] h-[28vw]  max-h-[600px]"
               src="https://assets.website-files.com/601835c0c88eb62d2fa657a1/6019880417e04655dd17e50b_leisara-imZnpDXSNVA-unsplash.jpg"
               alt=""
             />
           </div>
           <Paralax
-            className="mt-40 relative"
+            className="mt-40 relative md:mt-0 lg:-mt-20 xl:-mt-96"
             scrollY={scrollY}
             paralaxSpeed={40}
             scrollStartingPoint={1}
           >
             <img
-              className="aspect-[12/16] object-cover min-h-[520px] max-h-[1600px] h-[50vw]"
-              src="https://assets.website-files.com/601835c0c88eb62d2fa657a1/60199122d5c8861512defdfc_liana-mikah-jbqX046ww8I-unsplash-p-500.jpeg"
+              className="aspect-[12/16] object-cover min-h-[520px] max-h-[1600px] h-[54vw]"
+              src="https://assets.website-files.com/60153bc9d8840978bfd8963b/60171b4ee5da29b83ff7bf6e_kevin-laminto-Wac13Oopo34-unsplash.jpg"
               alt=""
             />
           </Paralax>
