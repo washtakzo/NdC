@@ -1,5 +1,6 @@
 import Head from "next/head";
 import { useEffect, useState } from "react";
+import { AiOutlineInstagram } from "react-icons/ai";
 import Advantage from "../components/Advantage";
 import Categorie from "../components/Categorie";
 import Footer from "../components/Footer";
@@ -7,6 +8,7 @@ import Header from "../components/Header";
 import LargeButton from "../components/LargeButton";
 import Paralax from "../components/Paralax";
 import PopularProduct from "../components/PopularProduct";
+import QuestionAnswer from "../components/QuestionAnswer";
 import AnimatedBackground from "../components/UI/AnimatedBackground";
 
 export default function Home() {
@@ -122,8 +124,8 @@ export default function Home() {
             />
           </div>
         </section>
-        <section className="px-2 flex flex-col border border-black py-8 bg-primary md:flex-row md:p-0 md:border-none md:h-[90vh]">
-          <div className="md:flex justify-center items-center md:w-[50%] md:border md:border-black md:border-r-0 md:p-16 md:relative ">
+        <section className="px-2 flex flex-col border border-black py-8 bg-primary md:flex-row md:p-0 md:h-[90vh] md:border border-b-0 md:border-black">
+          <div className="md:flex justify-center items-center md:w-[50%] md:border-r-[1px] md:border-black md:p-16 md:relative ">
             <img
               className="z-[1] md:max-h-[60%]"
               src="https://assets.website-files.com/60153bc9d8840978bfd8963b/60171b4ffd23362dd81bcc71_jasmin-chew-bv-X6AoPxXU-unsplash.jpg"
@@ -131,10 +133,48 @@ export default function Home() {
             />
             <div className="hidden md:block w-[80%] max-w-[400px] aspect-square absolute -left-[20%] top-[40%] rounded-full border border-black lg:top-[10%] lg:max-w-[70vh]" />
           </div>
-          <div className="md:border border-black md:w-[50%] flex flex-col justify-around">
+          <div className="md:border border-blacks md:w-[50%] flex flex-col justify-around">
             <Advantage />
             <Advantage />
             <Advantage />
+          </div>
+        </section>
+        <section className="md:flex border-[1px] border-black md:border-t-0">
+          <QuestionAnswer />
+          <QuestionAnswer />
+          <QuestionAnswer />
+        </section>
+        <section
+          id="instagram"
+          className="bg-primary border border-t-0 border-black"
+        >
+          <h2 className="font-serif text-3xl px-4 py-12 md:text-4xl lg:py-16 lg:px-16 xl:text-5xl xl:py-24 xl:px-20">
+            <span>
+              <AiOutlineInstagram className="inline" />{" "}
+            </span>
+            Follow us on Instagram @Noce_de_Coton
+          </h2>
+          <div className="grid grid-cols-2 mx-auto md:grid-cols-4">
+            <img
+              className="aspect-square object-cover"
+              src="https://assets.website-files.com/60153bc9d8840978bfd8963b/60171b503780a685ed08385d_kailey-sniffin-Ex0P6ldX384-unsplash.jpg"
+              alt=""
+            />
+            <img
+              className="aspect-square object-cover"
+              src="https://assets.website-files.com/60153bc9d8840978bfd8963b/60171b4f5a9804b9ccbae23e_hanen-souhail-1KO9ytYcGj4-unsplash.jpg"
+              alt=""
+            />
+            <img
+              className="aspect-square object-cover"
+              src="https://assets.website-files.com/60153bc9d8840978bfd8963b/60171b4cab020f116e82150c_roozbeh-badizadegan-p46Orndw0QM-unsplash.jpg"
+              alt=""
+            />
+            <img
+              className="aspect-square object-cover"
+              src="https://assets.website-files.com/60153bc9d8840978bfd8963b/60171b503780a685ed08385d_kailey-sniffin-Ex0P6ldX384-unsplash.jpg"
+              alt=""
+            />
           </div>
         </section>
         <Footer />
