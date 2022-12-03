@@ -1,5 +1,6 @@
 import Head from "next/head";
 import { useEffect, useState } from "react";
+import Advantage from "../components/Advantage";
 import Categorie from "../components/Categorie";
 import Header from "../components/Header";
 import LargeButton from "../components/LargeButton";
@@ -118,6 +119,21 @@ export default function Home() {
               title="Vegan Leather Blue Bag"
               price={200}
             />
+          </div>
+        </section>
+        <section className="px-2 flex flex-col border border-black py-8 bg-primary md:flex-row md:p-0 md:border-none md:h-[90vh]">
+          <div className="md:flex justify-center items-center md:w-[50%] md:border md:border-black md:border-r-0 md:p-16 md:relative ">
+            <img
+              className="z-[1] md:max-h-[60%]"
+              src="https://assets.website-files.com/60153bc9d8840978bfd8963b/60171b4ffd23362dd81bcc71_jasmin-chew-bv-X6AoPxXU-unsplash.jpg"
+              alt="illustration"
+            />
+            <div className="hidden md:block w-[80%] max-w-[400px] aspect-square absolute -left-[20%] top-[40%] rounded-full border border-black lg:top-[10%] lg:max-w-[70vh]" />
+          </div>
+          <div className="md:border border-black md:w-[50%] flex flex-col justify-around">
+            <Advantage />
+            <Advantage />
+            <Advantage />
           </div>
         </section>
       </main>
