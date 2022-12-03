@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Copyright from "../components/Copyright";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import AdvantagesSection from "../components/Index/AdvantagesSection";
@@ -36,8 +37,9 @@ export default function Home() {
         <AdvantagesSection />
         <QuestionsSection />
         <InstagramSection />
-        <Footer />
       </main>
+      <Footer />
+      <Copyright />
     </>
   );
 }
