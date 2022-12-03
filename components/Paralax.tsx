@@ -1,7 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 type Props = {
-  scrollY: number;
   scrollStartingPoint: number;
   paralaxSpeed: number;
   className?: string;
@@ -9,12 +8,23 @@ type Props = {
 };
 
 const Paralax = ({
-  scrollY,
   scrollStartingPoint,
   paralaxSpeed,
   className,
   children,
 }: Props) => {
+  const [scrollY, setScrollY] = useState(0);
+
+  const scrollListener = () => {
+    setScrollY(window.scrollY);
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", scrollListener);
+    return () => {
+      removeEventListener("scroll", scrollListener);
+    };
+  }, []);
   const isAtStartingPoint = scrollY >= scrollStartingPoint;
 
   const translationScore =

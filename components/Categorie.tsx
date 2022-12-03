@@ -2,12 +2,11 @@ import React from "react";
 import Paralax from "./Paralax";
 
 type Props = {
-  scrollY: number;
   scrollStartingPoint: number;
   paralaxSpeed: number;
 };
 
-const Categorie = ({ scrollY, scrollStartingPoint, paralaxSpeed }: Props) => {
+const Categorie = ({ scrollStartingPoint, paralaxSpeed }: Props) => {
   return (
     <div className="categorie">
       <h2 className="categorie__title font-serif text-6xl ">OUTFITS</h2>
@@ -22,7 +21,6 @@ const Categorie = ({ scrollY, scrollStartingPoint, paralaxSpeed }: Props) => {
       </div>
       <Paralax
         className="categorie__image"
-        scrollY={scrollY}
         scrollStartingPoint={scrollStartingPoint}
         paralaxSpeed={paralaxSpeed}
       >
