@@ -6,6 +6,7 @@ import Header from "../components/Header";
 import LargeButton from "../components/LargeButton";
 import Paralax from "../components/Paralax";
 import PopularProduct from "../components/PopularProduct";
+import QuestionAnswer from "../components/QuestionAnswer";
 import AnimatedBackground from "../components/UI/AnimatedBackground";
 
 export default function Home() {
@@ -121,8 +122,8 @@ export default function Home() {
             />
           </div>
         </section>
-        <section className="px-2 flex flex-col border border-black py-8 bg-primary md:flex-row md:p-0 md:border-none md:h-[90vh]">
-          <div className="md:flex justify-center items-center md:w-[50%] md:border md:border-black md:border-r-0 md:p-16 md:relative ">
+        <section className="px-2 flex flex-col border border-black py-8 bg-primary md:flex-row md:p-0 md:h-[90vh] md:border border-b-0 md:border-black">
+          <div className="md:flex justify-center items-center md:w-[50%] md:border-r-[1px] md:border-black md:p-16 md:relative ">
             <img
               className="z-[1] md:max-h-[60%]"
               src="https://assets.website-files.com/60153bc9d8840978bfd8963b/60171b4ffd23362dd81bcc71_jasmin-chew-bv-X6AoPxXU-unsplash.jpg"
@@ -130,11 +131,22 @@ export default function Home() {
             />
             <div className="hidden md:block w-[80%] max-w-[400px] aspect-square absolute -left-[20%] top-[40%] rounded-full border border-black lg:top-[10%] lg:max-w-[70vh]" />
           </div>
-          <div className="md:border border-black md:w-[50%] flex flex-col justify-around">
+          <div className="md:border border-blacks md:w-[50%] flex flex-col justify-around">
             <Advantage />
             <Advantage />
             <Advantage />
           </div>
+        </section>
+        <section className="md:flex border-[1px] border-black md:border-t-0">
+          <QuestionAnswer />
+          <QuestionAnswer />
+          <QuestionAnswer />
+        </section>
+        <section className="relative max-w-[2000px] mx-auto h-[80vh] lg:h-screen flex justify-center items-center ">
+          <h2 className="font-serif px-4 text-4xl md:text-6xl lg:text-7xl xl:text-8xl text-center max-w-[800px] mx-auto  leading-[70px]  sm:leading-[80px] md:leading-[90px] lg:leading-[100px] xl:leading-[120px]">
+            With Framy You Can Sell Clothes, Shoes, Accessories, Jewelry, You
+            Name It!
+          </h2>
         </section>
       </main>
     </>
