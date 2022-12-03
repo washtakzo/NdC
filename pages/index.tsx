@@ -139,7 +139,7 @@ export default function Home() {
             <Advantage />
           </div>
         </section>
-        <section className="md:flex border-[1px] border-black md:border-t-0">
+        <section className="md:flex md:justify-around border-[1px] border-black md:border-t-0">
           <QuestionAnswer />
           <QuestionAnswer />
           <QuestionAnswer />
