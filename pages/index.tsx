@@ -92,7 +92,7 @@ export default function Home() {
           />
         </section>
         <section
-          className="min-h-[80vh]s flex flex-col justify-center p-4 text-center bg-secondary border-t-[1px] border-b-[1px] border-black
+          className="min-h-[80vh]s flex flex-col justify-center p-4 text-center bg-secondary border-t-[1px] border-black
         "
         >
           <h2 className="font-serif text-5xl leading-[60px] my-8 lg:text-[5vw] xl:text-[76px]">

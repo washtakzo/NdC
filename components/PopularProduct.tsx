@@ -11,7 +11,7 @@ const PopularProduct = ({ image, title, price }: Props) => {
     <div className=" flex justify-center items-center mx-auto w-full px-8">
       <div className="my-8 mx-auto">
         <img
-          className="w-[64vw] min-w-[340px] lg:w-[32px]s lg:min-w-0"
+          className="w-[64vw] lg:w-[32px]s lg:min-w-0"
           src={image}
           alt="product"
         />
