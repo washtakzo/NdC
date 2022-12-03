@@ -2,6 +2,7 @@ import Head from "next/head";
 import { useEffect, useState } from "react";
 import Advantage from "../components/Advantage";
 import Categorie from "../components/Categorie";
+import Footer from "../components/Footer";
 import Header from "../components/Header";
 import LargeButton from "../components/LargeButton";
 import Paralax from "../components/Paralax";
@@ -136,6 +137,7 @@ export default function Home() {
             <Advantage />
           </div>
         </section>
+        <Footer />
       </main>
     </>
   );
