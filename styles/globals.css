@@ -117,7 +117,6 @@ a {
     padding: 0 24px;
   }
   .categorie__title {
-    font-size: 10vw;
     line-break: anywhere;
     /* background-color: red; */
   }
@@ -138,6 +137,7 @@ a {
   }
 
   .categorie__title {
+    font-size: 10vw;
     position: absolute;
     right: 22%;
     top: 10%;
@@ -165,8 +165,9 @@ a {
     max-height: 600px;
   }
 }
-/* LG-1280px */
-@media screen and (min-width: 1280px) {
+/* LG-1024px */
+/* @media screen and (min-width: 1280px) { */
+@media screen and (min-width: 1024px) {
   .categorie {
   }
 
@@ -178,8 +179,9 @@ a {
     max-height: 1200px;
   }
 }
-/* XL-1640 */
-@media screen and (min-width: 1640px) {
+/* XL-1440 */
+/* @media screen and (min-width: 1640px) { */
+@media screen and (min-width: 1440px) {
   .categorie {
   }
 }

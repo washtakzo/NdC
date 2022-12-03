@@ -10,9 +10,7 @@ type Props = {
 const Categorie = ({ scrollY, scrollStartingPoint, paralaxSpeed }: Props) => {
   return (
     <div className="categorie">
-      <h2 className="categorie__title font-serif text-6xlsm:text-8xl">
-        OUTFITS
-      </h2>
+      <h2 className="categorie__title font-serif text-6xl ">OUTFITS</h2>
       <div className="categorie__description_container">
         <h3 className="font-serif  text-2xl sm:text-3xl">
           You can choose which collections you want to be featured on the main
