@@ -26,7 +26,10 @@ const PresentationSection = () => {
       <h2 className="top-[24%] lg:top-[25%] xl:top-[5%] left-[25%] absolute text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl max-w-[900px] font-serif">
         Framy Is A Fashion Lifestyle Template
       </h2>
-      <LargeButton className="absolute left-0 right-0 bottom-[10%]">
+      <LargeButton
+        href="/shop"
+        className="absolute left-0 right-0 bottom-[10%]"
+      >
         SHOP COLLECTIONS
       </LargeButton>
     </section>
