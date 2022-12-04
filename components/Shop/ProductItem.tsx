@@ -1,5 +1,6 @@
 import { useRouter } from "next/router";
 import React from "react";
+import { priceFormater } from "../../helper/functions";
 
 type Props = {
   id: string;
@@ -35,7 +36,7 @@ const ProductItem = ({ id, title, description, price, images }: Props) => {
       <h2 className="mt-4 text-2xl font-serif group-hover:text-third">
         {title}
       </h2>
-      <p className="text-sm">{`€ ${price.toFixed(2)} Euros`}</p>
+      <p className="text-sm">{priceFormater(price)}</p>
     </div>
   );
 };

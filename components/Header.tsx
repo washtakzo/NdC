@@ -34,9 +34,9 @@ const Header = () => {
           id="header_translate"
           style={{ transform: `translateY(${headerTranslation})` }}
         >
-          <h1 className="inline-flex font-semibold text-3xl mb-8 cursor-pointer font-serif">
+          <h2 className="inline-flex font-semibold text-3xl mb-8 cursor-pointer font-serif">
             <Link href="/">Noce de coton</Link>
-          </h1>
+          </h2>
           <ul className="flex space-x-8">
             <li className="header__liste_item sm:text-green-500 md:text-blue-500 lg:text-orange-500 xl:text-red-500">
               Our Story

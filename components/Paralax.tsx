@@ -31,7 +31,7 @@ const Paralax = ({
     -1 * paralaxSpeed * (scrollY - scrollStartingPoint + 10) * 0.001;
 
   const translationY =
-    (isAtStartingPoint && `translateY(${translationScore}%)`) || "";
+    (isAtStartingPoint && `translateY(${translationScore}%)`) || "none";
 
   return (
     <div className={className} style={{ transform: translationY }}>
