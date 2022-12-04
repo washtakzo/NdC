@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import React from "react";
 
 type Props = {
@@ -10,8 +11,15 @@ type Props = {
 
 const ProductItem = ({ id, title, description, price, images }: Props) => {
   const secondaryImage = images[1] || images[0];
+  const router = useRouter();
+  const clickHander = () => {
+    router.push("/product/" + id);
+  };
   return (
-    <div className="my-4 lg:my-16 group cursor-pointer md:w-[80%] mx-auto md:hover:scale-105 transition-all duration-300 ease-in-out">
+    <div
+      className="my-4 lg:my-16 group cursor-pointer md:w-[80%] mx-auto md:hover:scale-105 transition-all duration-300 ease-in-out"
+      onClick={clickHander}
+    >
       <div className="relative">
         <img
           src={images[0]}
