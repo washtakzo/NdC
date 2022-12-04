@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Link from "next/link";
 
 const Header = () => {
   const [scrollY, setScrollY] = useState(0);
@@ -34,14 +35,15 @@ const Header = () => {
           style={{ transform: `translateY(${headerTranslation})` }}
         >
           <h1 className="inline-flex font-semibold text-3xl mb-8 cursor-pointer font-serif">
-            Noce de coton
+            <Link href="/">Noce de coton</Link>
           </h1>
           <ul className="flex space-x-8">
             <li className="header__liste_item sm:text-green-500 md:text-blue-500 lg:text-orange-500 xl:text-red-500">
               Our Story
             </li>
-            <li className="header__liste_item">Shop</li>
-            <li className="header__liste_item">Blog</li>
+            <Link href="/shop" className="header__liste_item">
+              Shop
+            </Link>
             <li className="header__liste_item">Contact Us</li>
           </ul>
         </div>
