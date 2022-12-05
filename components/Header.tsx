@@ -27,7 +27,7 @@ const Header = () => {
         style={{ opacity: opacity }}
       />
       <div
-        className="flex flex-col py-2 px-6 lg:px-28"
+        className="flex flex-col py-2 px-6 xl:px-28"
         style={{ height: headerHeigth }}
       >
         <div
