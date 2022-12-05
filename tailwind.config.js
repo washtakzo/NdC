@@ -17,6 +17,10 @@ module.exports = {
         serif: ["Italiana", "serif"],
         sans: ["Poppins", "sans-serif"],
       },
+      transitionTimingFunction: {
+        "show-accordion": "cubic-bezier(0, 1, 0, 1)",
+        "hide-accordion": "cubic-bezier(1, 0, 1, 0)",
+      },
     },
     screens: {
       sm: "424px",

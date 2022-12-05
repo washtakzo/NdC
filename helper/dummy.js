@@ -1,5 +1,15 @@
 export const DUMMY_PRODUCTS = [
   {
+    id: "0id=)test",
+    title: "Miam Perfume",
+    description: "Description of the product here ...",
+    categorie: "fairpart",
+    price: 200.76,
+    images: [
+      "https://assets.website-files.com/601835c0c88eb62d2fa657a1/6019880417e04655dd17e50b_leisara-imZnpDXSNVA-unsplash.jpg",
+    ],
+  },
+  {
     id: "1",
     title: "FairPart Perfume",
     description: "Description of the product here ...",
