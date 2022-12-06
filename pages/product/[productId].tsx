@@ -8,17 +8,31 @@ import QuestionsSection from "../../components/Index/QuestionsSection";
 import Main from "../../components/Main";
 import ProductDetailSection from "../../components/Product/ProductDetailSection";
 import { DUMMY_PRODUCTS } from "../../helper/dummy";
+import { Product } from "../../helper/types";
 
-const Product = () => {
+const ProductPage = () => {
   const router = useRouter();
   const productId = router.query.productId;
-  const product = DUMMY_PRODUCTS.find((product) => product.id === productId);
+  const product: Product | undefined = DUMMY_PRODUCTS.find(
+    (product: Product) => {
+      return product.id === productId;
+    }
+  );
+
+  const NoProductFoundErrorJSX = (
+    <div className="flex justify-center items-center h-[60vh]">
+      <h2 className="font-serif text-4xl text-center">
+        Could not find the product <br /> Server Problem please try again
+      </h2>
+    </div>
+  );
 
   return (
     <>
       <Main className="bg-primary">
         <Header />
-        <ProductDetailSection product={product} />
+        {!product && NoProductFoundErrorJSX}
+        {product && <ProductDetailSection product={product} />}
         <AdvantagesSection />
         <QuestionsSection />
         <Footer />
@@ -28,4 +42,4 @@ const Product = () => {
   );
 };
 
-export default Product;
+export default ProductPage;

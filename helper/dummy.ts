@@ -1,4 +1,6 @@
-export const DUMMY_PRODUCTS = [
+import { Product } from "./types";
+
+export const DUMMY_PRODUCTS: Product[] = [
   {
     id: "0id=)test",
     title: "Miam Perfume",

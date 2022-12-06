@@ -3,25 +3,22 @@ import { priceFormater } from "../../helper/functions";
 import Accordion from "../Accordion";
 import InputQuantity from "../InputQuantity";
 import MediumButton from "../MediumButton";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { basketActions } from "../../store/basket-slice";
-import { Basket, BasketState, Product } from "../../helper/types";
+import { Product } from "../../helper/types";
 
 type Props = {
   product: Product;
 };
 
 const ProductDetailSection = ({ product }: Props) => {
-  const basket = useSelector((state: any) => state.basketSection);
   const dispatch = useDispatch();
   const addProductHandler = () => {
     dispatch(basketActions.addProduct({ product: product, quantity: 1 }));
   };
   const removeProductHandler = () => {
     dispatch(basketActions.removeProduct({ product: product, quantity: 1 }));
-    console.log("remove");
   };
-  console.log(basket);
 
   return (
     <section className="flex flex-col md:flex-row px-4 py-8  justify-evenly lg:py-16">
