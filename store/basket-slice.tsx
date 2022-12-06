@@ -63,6 +63,9 @@ const basketSlice = createSlice({
         });
       }
 
+      //open basket modal
+      state.isShowBasket = true;
+
       updateOtherState(state);
     },
     removeProduct(state, action) {
