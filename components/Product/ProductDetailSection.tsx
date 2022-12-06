@@ -3,13 +3,23 @@ import { priceFormater } from "../../helper/functions";
 import Accordion from "../Accordion";
 import InputQuantity from "../InputQuantity";
 import MediumButton from "../MediumButton";
+import { useDispatch } from "react-redux";
+import { basketActions } from "../../store/basket-slice";
 import { Product } from "../../helper/types";
 
 type Props = {
-  product: Product | undefined;
+  product: Product;
 };
 
 const ProductDetailSection = ({ product }: Props) => {
+  const dispatch = useDispatch();
+  const addProductHandler = () => {
+    dispatch(basketActions.addProduct({ product: product, quantity: 1 }));
+  };
+  const removeProductHandler = () => {
+    dispatch(basketActions.removeProduct({ product: product, quantity: 1 }));
+  };
+
   return (
     <section className="flex flex-col md:flex-row px-4 py-8  justify-evenly lg:py-16">
       <div
@@ -22,9 +32,7 @@ const ProductDetailSection = ({ product }: Props) => {
           </h1>
           <p className="text-lg">{priceFormater(product?.price)}</p>
           <InputQuantity type="number" min={50} step={10} defaultValue={50} />
-          <MediumButton className="my-8 lg:my-16  bg-third text-white text-sm w-full h-16 mx-auto block tracking-wider">
-            ADD TO CART
-          </MediumButton>
+          <MediumButton onClick={addProductHandler}>ADD TO CART</MediumButton>
           <p>{product?.description}</p>
           <div className="my-8 lg:my-16">
             {Array(3)
@@ -42,6 +50,7 @@ const ProductDetailSection = ({ product }: Props) => {
             className="mb-4 last:mb-0 md:mb-16 md:last:mb-0"
             src={image}
             alt="product image"
+            onClick={removeProductHandler}
           />
         ))}
       </div>
