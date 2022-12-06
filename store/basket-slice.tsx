@@ -5,6 +5,7 @@ type BasketSlice = {
   basket: Basket;
   numberOfProducts: number;
   totalPrice: number;
+  isShowBasket: boolean;
 };
 
 type BasketPayload = {
@@ -33,6 +34,7 @@ const initialState: BasketSlice = {
   basket: [],
   numberOfProducts: 0,
   totalPrice: 0,
+  isShowBasket: false,
 };
 
 const basketSlice = createSlice({
@@ -93,6 +95,9 @@ const basketSlice = createSlice({
       });
 
       updateOtherState(state);
+    },
+    toggleShowBasket(state) {
+      state.isShowBasket = !state.isShowBasket;
     },
   },
 });

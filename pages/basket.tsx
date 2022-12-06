@@ -5,6 +5,8 @@ import { AiOutlineClose } from "react-icons/ai";
 import { priceFormater } from "../helper/functions";
 import { BasketItem, Product } from "../helper/types";
 import MediumButton from "../components/MediumButton";
+import ModalBackground from "../components/ModalBackground";
+import { Portal } from "react-portal";
 
 const Basket = () => {
   const basket = useSelector((state: any) => state.basketSection.basket);
@@ -37,6 +39,10 @@ const Basket = () => {
     );
   };
 
+  const crossClickHandler = () => {
+    dispatch(basketActions.toggleShowBasket());
+  };
+
   const noItemJSX = (
     <div className="flex justify-center my-16">
       <h2>No items found</h2>
@@ -44,12 +50,16 @@ const Basket = () => {
   );
 
   return (
-    <>
-      <div className=" min-h-screen flex flex-col justify-between">
+    <Portal node={document && document.getElementById("root")}>
+      <ModalBackground />
+      <div className="h-screen flex flex-col justify-between fixed top-0 right-0 bg-white z-50 sm:min-w-[50%]s md:w-[70%] lg:w-[50%] xl:w-[800px] overflow-y-scroll">
         <div>
           <div className="flex justify-between items-center p-4 border-b border-secondary">
             <h2 className="font-serif text-4xl">Your Cart</h2>
-            <AiOutlineClose className="w-6 h-6 cursor-pointer" />
+            <AiOutlineClose
+              className="w-6 h-6 cursor-pointer"
+              onClick={crossClickHandler}
+            />
           </div>
           {basket.length === 0 && noItemJSX}
           {basket.map((item: BasketItem) => {
@@ -106,7 +116,7 @@ const Basket = () => {
           <MediumButton className="">CONTINUE TO CHECKOUT</MediumButton>
         </div>
       </div>
-    </>
+    </Portal>
   );
 };
 
