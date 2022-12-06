@@ -50,7 +50,7 @@ const Basket = () => {
   );
 
   return (
-    <Portal node={document && document.getElementById("root")}>
+    <Portal>
       <ModalBackground />
       <div className="h-screen flex flex-col justify-between fixed top-0 right-0 bg-white z-50 md:w-[60%] lg:w-[50%] xl:w-[800px] overflow-y-auto">
         <div>
