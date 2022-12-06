@@ -4,18 +4,13 @@ import { basketActions } from "../store/basket-slice";
 import { AiOutlineClose } from "react-icons/ai";
 import { priceFormater } from "../helper/functions";
 import { BasketItem, Product } from "../helper/types";
-import { DUMMY_PRODUCTS } from "../helper/dummy";
 import MediumButton from "../components/MediumButton";
-
-const basket2 = DUMMY_PRODUCTS.map((product) => {
-  return {
-    product: product,
-    quantity: 9,
-  };
-});
 
 const basket = () => {
   const basket = useSelector((state: any) => state.basketSection.basket);
+  const totalPrice = useSelector(
+    (state: any) => state.basketSection.totalPrice
+  );
   const dispatch = useDispatch();
 
   const removeProduct = (product: Product) =>
@@ -42,6 +37,12 @@ const basket = () => {
     );
   };
 
+  const noItemJSX = (
+    <div className="flex justify-center my-16">
+      <h2>No items found</h2>
+    </div>
+  );
+
   return (
     <>
       <div className=" min-h-screen flex flex-col justify-between">
@@ -50,9 +51,10 @@ const basket = () => {
             <h2 className="font-serif text-4xl">Your Cart</h2>
             <AiOutlineClose className="w-6 h-6 cursor-pointer" />
           </div>
+          {basket.length === 0 && noItemJSX}
           {basket.map((item: BasketItem) => {
             return (
-              <>
+              <div key={item.product.id}>
                 <div className="flex justify-around items-center py-4 borders border-black">
                   <div className="w-[25%]">
                     <img
@@ -92,14 +94,14 @@ const basket = () => {
                   </div>
                 </div>
                 <div className="w-[95%] h-[1px] bg-third25 mx-auto" />
-              </>
+              </div>
             );
           })}
         </div>
         <div className="px-8 py-4 border-t border-third25 mt-2">
           <div className="flex justify-between">
             <p>Subtotal</p>
-            <h4 className="font-bold">{priceFormater(1999)}</h4>
+            <h4 className="font-bold">{priceFormater(totalPrice)}</h4>
           </div>
           <MediumButton className="">CONTINUE TO CHECKOUT</MediumButton>
         </div>

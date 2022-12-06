@@ -97,7 +97,10 @@ const Header = () => {
                   />
                 </svg>
                 {numberOfProduct > 0 && (
-                  <div className="absolute h-6 w-6 bg-third -top-2 -right-2 rounded-full flex justify-center items-center text-white text-xs">
+                  <div
+                    className="absolute h-6 w-6 bg-third -top-2 -right-2 rounded-full flex justify-center items-center text-white text-xs cursor-pointer"
+                    onClick={basketClickHandler}
+                  >
                     {numberOfProduct}
                   </div>
                 )}

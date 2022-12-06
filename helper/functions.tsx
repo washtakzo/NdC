@@ -1,7 +1,5 @@
 export const priceFormater = (price?: number) => {
-  if (price) {
-    return `€ ${price.toFixed(2)} Euros`;
-  }
+  return `€ ${price?.toFixed(2)} Euros`;
 };
 
 export const textToHeigth = (text: string) => {

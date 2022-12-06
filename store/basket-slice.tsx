@@ -4,6 +4,7 @@ import { BasketItem, Basket, Product } from "../helper/types";
 type BasketSlice = {
   basket: Basket;
   numberOfProducts: number;
+  totalPrice: number;
 };
 
 type BasketPayload = {
@@ -16,9 +17,22 @@ type BasketAction = {
   type: string;
 };
 
+const updateOtherState = (state: BasketSlice) => {
+  //update numberOfProducts
+  state.numberOfProducts = state.basket.length;
+
+  //recalculate totalPrice
+  state.totalPrice = state.basket.reduce((total: number, item: BasketItem) => {
+    return (total += item.product.price * item.quantity);
+  }, 0);
+
+  console.log(state.totalPrice);
+};
+
 const initialState: BasketSlice = {
   basket: [],
   numberOfProducts: 0,
+  totalPrice: 0,
 };
 
 const basketSlice = createSlice({
@@ -47,8 +61,7 @@ const basketSlice = createSlice({
         });
       }
 
-      //determine numberOfProducts
-      state.numberOfProducts = state.basket.length;
+      updateOtherState(state);
     },
     removeProduct(state, action) {
       const productToRemove = action.payload.product;
@@ -71,8 +84,7 @@ const basketSlice = createSlice({
         return item.quantity > 0;
       });
 
-      //update numberOfProducts
-      state.numberOfProducts = state.basket.length;
+      updateOtherState(state);
     },
     removeCompletProduct(state, action) {
       const productToRemove = action.payload.product;
@@ -80,8 +92,7 @@ const basketSlice = createSlice({
         return item.product.id !== productToRemove.id;
       });
 
-      //update numberOfProducts
-      state.numberOfProducts = state.basket.length;
+      updateOtherState(state);
     },
   },
 });
