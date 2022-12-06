@@ -9,7 +9,7 @@ type Props = {
 const MediumButton = ({ className, onClick, children }: Props) => {
   return (
     <button
-      className={`my-8 lg:my-16  bg-third text-white text-sm w-full h-16 mx-auto block tracking-wider ${className}`}
+      className={`my-8 lg:my-16 px-8  bg-third text-white text-sm w-full h-16 mx-auto block tracking-wider ${className}`}
       onClick={onClick}
     >
       {children}

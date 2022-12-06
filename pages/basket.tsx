@@ -52,10 +52,10 @@ const Basket = () => {
   return (
     <Portal node={document && document.getElementById("root")}>
       <ModalBackground />
-      <div className="h-screen flex flex-col justify-between fixed top-0 right-0 bg-white z-50 sm:min-w-[50%]s md:w-[70%] lg:w-[50%] xl:w-[800px] overflow-y-scroll">
+      <div className="h-screen flex flex-col justify-between fixed top-0 right-0 bg-white z-50 md:w-[60%] lg:w-[50%] xl:w-[800px] overflow-y-auto">
         <div>
           <div className="flex justify-between items-center p-4 border-b border-secondary">
-            <h2 className="font-serif text-4xl">Your Cart</h2>
+            <h2 className="font-serif text-3xl md:text-4xl">Your Cart</h2>
             <AiOutlineClose
               className="w-6 h-6 cursor-pointer"
               onClick={crossClickHandler}
@@ -70,33 +70,35 @@ const Basket = () => {
                     <img
                       src={item.product.images[0]}
                       alt={item.product.title}
-                      className="mx-auto p-4"
+                      className="mx-auto sm:p-4"
                     />
                   </div>
                   <div className="w-[50%]">
-                    <h3 className="font-serif text-3xl">
+                    <h3 className="font-serif text-xl sm:text-2xl md:text-3xl">
                       {item.product.title}
                     </h3>
-                    <p className="my-2">{priceFormater(item.product.price)}</p>
+                    <p className="my-2 text-xs sm:text-sm md:text-[1rem]">
+                      {priceFormater(item.product.price)}
+                    </p>
                     <div className="">
                       <button
-                        className="text-third"
+                        className="text-third text-sm md:text-[1rem]"
                         onClick={() => removeCompletProduct(item.product)}
                       >
                         Remove
                       </button>
                     </div>
                   </div>
-                  <div className="w-[15%] text-center flex">
+                  <div className="text-center flex flex-col sm:flex-row">
                     <button
-                      className="mx-4"
+                      className="sm:mx-4 text-lg font-bold text-third"
                       onClick={() => removeProduct(item.product)}
                     >
                       -
                     </button>
-                    <p>{item.quantity}</p>
+                    <p className="px-4">{item.quantity}</p>
                     <button
-                      className="mx-4"
+                      className="sm:mx-4 text-lg font-bold text-third"
                       onClick={() => addProduct(item.product)}
                     >
                       +
@@ -111,7 +113,7 @@ const Basket = () => {
         <div className="px-8 py-4 border-t border-third25 mt-2">
           <div className="flex justify-between">
             <p>Subtotal</p>
-            <h4 className="font-bold">{priceFormater(totalPrice)}</h4>
+            <h4 className="font-bold">{totalPrice + " €"}</h4>
           </div>
           <MediumButton className="">CONTINUE TO CHECKOUT</MediumButton>
         </div>
