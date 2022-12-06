@@ -6,7 +6,7 @@ import { priceFormater } from "../helper/functions";
 import { BasketItem, Product } from "../helper/types";
 import MediumButton from "../components/MediumButton";
 
-const basket = () => {
+const Basket = () => {
   const basket = useSelector((state: any) => state.basketSection.basket);
   const totalPrice = useSelector(
     (state: any) => state.basketSection.totalPrice
@@ -110,4 +110,4 @@ const basket = () => {
   );
 };
 
-export default basket;
+export default Basket;
