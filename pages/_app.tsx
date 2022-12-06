@@ -20,9 +20,7 @@ export default function App({ Component, pageProps }: AppProps) {
             rel="stylesheet"
           />
         </Head>
-        <div id="root">
-          <Component {...pageProps} />
-        </div>
+        <Component {...pageProps} />
       </Provider>
     </>
   );
