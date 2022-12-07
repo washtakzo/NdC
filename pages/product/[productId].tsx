@@ -30,7 +30,6 @@ const ProductPage = () => {
   return (
     <>
       <Main className="bg-primary">
-        <Header />
         {!product && NoProductFoundErrorJSX}
         {product && <ProductDetailSection product={product} />}
         <AdvantagesSection />

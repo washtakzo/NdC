@@ -41,7 +41,7 @@ const Header = () => {
   };
 
   return (
-    <>
+    <header>
       <div className="fixed top-0 z-10 w-full">
         <div
           id="header_background"
@@ -129,7 +129,7 @@ const Header = () => {
       </div>
 
       {isShowBasket && <Basket />}
-    </>
+    </header>
   );
 };
 
