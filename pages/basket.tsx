@@ -9,9 +9,9 @@ import ModalBackground from "../components/ModalBackground";
 import { Portal } from "react-portal";
 
 const Basket = () => {
-  const basket = useSelector((state: any) => state.basketSection.basket);
+  const basket = useSelector((store: any) => store.basketSection.basket);
   const totalPrice = useSelector(
-    (state: any) => state.basketSection.totalPrice
+    (store: any) => store.basketSection.totalPrice
   );
   const dispatch = useDispatch();
 
