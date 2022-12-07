@@ -14,7 +14,6 @@ const shop = () => {
     <>
       <AnimatedBackground />
       <Main>
-        <Header />
         <ShopBanner />
         <ShopSection />
         <AdvantagesSection />

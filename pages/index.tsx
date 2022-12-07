@@ -16,7 +16,6 @@ export default function Home() {
     <>
       <AnimatedBackground />
       <Main className="sm:pt-52">
-        <Header />
         <PresentationSection />
         <PunchySection />
         <CategoriesSection />
