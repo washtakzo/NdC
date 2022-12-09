@@ -3,7 +3,7 @@ import React, { useState } from "react";
 const useHttp = () => {
   const [isLoading, setIsLoading] = useState(false);
 
-  const [error, setError] = useState();
+  const [error, setError] = useState<Error | undefined>();
   const sendRequest = async (
     url: string,
     method: string = "GET",
@@ -29,7 +29,7 @@ const useHttp = () => {
       }
       setIsLoading(false);
       return data;
-    } catch (e) {
+    } catch (e: any) {
       setError(e);
       setIsLoading(false);
       throw new Error(e.message);

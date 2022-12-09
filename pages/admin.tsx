@@ -7,6 +7,7 @@ import useHttp from "../hooks/useHttp";
 import ProductItem from "../components/Shop/ProductItem";
 import MediumButton from "../components/MediumButton";
 import ImageUpload from "../components/ImageUpload";
+import { Product } from "../helper/types";
 
 const BASE_URL = "http://localhost:9000";
 const PRODUCTS_URL = BASE_URL + "/api/products/";
@@ -16,7 +17,7 @@ const Admin = () => {
   const [products, setProducts] = React.useState([]);
   const { isLoading, error, sendRequest } = useHttp();
   const { register, handleSubmit } = useForm();
-  const [images, setImages] = useState();
+  const [images, setImages] = useState<any[] | undefined>();
 
   const postProductHandler = async (data: any) => {
     const { title, description, categorie, price, adminPassword } = data;
@@ -27,12 +28,14 @@ const Admin = () => {
     formData.append("categorie", categorie);
     formData.append("price", price);
     formData.append("adminPassword", adminPassword);
-    formData.append("image", images[0]);
+    if (images) {
+      formData.append("image", images[0]);
+    }
     console.log({ formData });
 
     try {
       await sendRequest(PRODUCTS_URL, "POST", formData);
-    } catch (error) {
+    } catch (error: any) {
       console.warn(error.message);
     }
 
@@ -111,7 +114,7 @@ const Admin = () => {
         </h1>
         <div className="grid md:grid-cols-2 lg:grid-cols-3">
           {products &&
-            products.map((p) => (
+            products.map((p: Product) => (
               <div key={p.id} className="w-[80%] mx-auto">
                 <ProductItem {...p} />
                 <MediumButton onClick={() => deleteProductHandler(p.id)}>
