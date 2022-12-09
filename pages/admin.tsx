@@ -18,6 +18,7 @@ const Admin = () => {
   const { isLoading, error, sendRequest } = useHttp();
   const { register, handleSubmit } = useForm();
   const [images, setImages] = useState<any[] | undefined>();
+  console.log(error);
 
   const postProductHandler = async (data: any) => {
     const { title, description, categorie, price, adminPassword } = data;
