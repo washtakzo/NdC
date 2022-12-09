@@ -27,7 +27,7 @@ const ProductPage = () => {
       } catch (error) {}
     };
     fetchProduct();
-  }, []);
+  }, [productId, sendRequest]);
 
   const NoProductFoundErrorJSX = (
     <div className="flex justify-center items-center h-[60vh]">

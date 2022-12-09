@@ -18,7 +18,6 @@ const Admin = () => {
   const { isLoading, error, sendRequest } = useHttp();
   const { register, handleSubmit } = useForm();
   const [images, setImages] = useState<any[] | undefined>();
-  console.log(error);
 
   const postProductHandler = async (data: any) => {
     const { title, description, categorie, price, adminPassword } = data;
@@ -32,7 +31,6 @@ const Admin = () => {
     if (images) {
       formData.append("image", images[0]);
     }
-    console.log({ formData });
 
     try {
       await sendRequest(PRODUCTS_URL, "POST", formData);
@@ -40,7 +38,7 @@ const Admin = () => {
       console.warn(error.message);
     }
 
-    // window.location.reload();
+    window.location.reload();
   };
 
   const deleteProductHandler = async (productId: string) => {
@@ -64,7 +62,7 @@ const Admin = () => {
       } catch (error) {}
     };
     fetchData();
-  }, []);
+  }, [sendRequest]);
   return (
     <Main>
       <h1 className="text-center p-8 text-red-400 font-semibold">

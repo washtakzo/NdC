@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import ProductItem from "./ProductItem";
-import { DUMMY_PRODUCTS } from "../../helper/dummy";
 import useHttp from "../../hooks/useHttp";
 
 const PRODUCTS_URL = "http://localhost:9000/api/products/";
@@ -11,19 +10,19 @@ const ShopSection = () => {
   const [categorie, setCategorie] = useState("");
   const { isLoading, error, sendRequest } = useHttp();
 
-  const fetchAllProducts = async () => {
+  const fetchAllProducts = React.useCallback(async () => {
     try {
       const response = await sendRequest(PRODUCTS_URL);
       setProducts(response.products);
     } catch (error: any) {}
-  };
+  }, [sendRequest]);
 
-  const fetchCategorieProducts = async () => {
+  const fetchCategorieProducts = React.useCallback(async () => {
     try {
       const response = await sendRequest(CATEGORIE_URL + categorie);
       setProducts(response.products);
     } catch (error: any) {}
-  };
+  }, [sendRequest, categorie]);
 
   useEffect(() => {
     if (!categorie) {
@@ -31,7 +30,7 @@ const ShopSection = () => {
     } else {
       fetchCategorieProducts();
     }
-  }, [categorie]);
+  }, [categorie, fetchAllProducts, fetchCategorieProducts]);
 
   return (
     <section className="flex flex-col px-4 bg-primary md:flex-row md:justify-evenly md:py-8">
