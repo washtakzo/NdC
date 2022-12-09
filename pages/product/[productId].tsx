@@ -9,15 +9,25 @@ import Main from "../../components/Main";
 import ProductDetailSection from "../../components/Product/ProductDetailSection";
 import { DUMMY_PRODUCTS } from "../../helper/dummy";
 import { Product } from "../../helper/types";
+import useHttp from "../../hooks/useHttp";
+
+const PRODUCT_URL = "http://localhost:9000/api/products/";
 
 const ProductPage = () => {
   const router = useRouter();
   const productId = router.query.productId;
-  const product: Product | undefined = DUMMY_PRODUCTS.find(
-    (product: Product) => {
-      return product.id === productId;
-    }
-  );
+  const { isLoading, error, sendRequest } = useHttp();
+  const [product, setProduct] = React.useState();
+
+  React.useEffect(() => {
+    const fetchProduct = async () => {
+      try {
+        const response = await sendRequest(PRODUCT_URL + productId);
+        setProduct(response.product);
+      } catch (error) {}
+    };
+    fetchProduct();
+  }, []);
 
   const NoProductFoundErrorJSX = (
     <div className="flex justify-center items-center h-[60vh]">

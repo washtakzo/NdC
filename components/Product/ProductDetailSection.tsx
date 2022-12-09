@@ -11,11 +11,15 @@ type Props = {
   product: Product;
 };
 
+const BASE_URL = "http://localhost:9000/";
+
 const ProductDetailSection = ({ product }: Props) => {
   const dispatch = useDispatch();
+
   const addProductHandler = () => {
     dispatch(basketActions.addProduct({ product: product, quantity: 1 }));
   };
+
   const removeProductHandler = () => {
     dispatch(basketActions.removeProduct({ product: product, quantity: 1 }));
   };
@@ -44,11 +48,11 @@ const ProductDetailSection = ({ product }: Props) => {
         </div>
       </div>
       <div className="md:w-[40%] max-w-[700px]">
-        {product?.images.map((image) => (
+        {product?.images.map((imagePath) => (
           <img
-            key={image}
+            key={imagePath}
             className="mb-4 last:mb-0 md:mb-16 md:last:mb-0"
-            src={image}
+            src={BASE_URL + imagePath}
             alt="product image"
             onClick={removeProductHandler}
           />
