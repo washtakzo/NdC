@@ -1,3 +1,4 @@
+//TODO: Handle error modal and loading state
 import React, { useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 
@@ -11,12 +12,11 @@ const BASE_URL = "http://localhost:9000";
 const PRODUCTS_URL = BASE_URL + "/api/products/";
 const inputClass = "block mx-auto border border-secondary rounded-lg my-4 p-2";
 
-const admin = () => {
+const Admin = () => {
   const [products, setProducts] = React.useState([]);
   const { isLoading, error, sendRequest } = useHttp();
   const { register, handleSubmit } = useForm();
   const [images, setImages] = useState();
-  console.log(products);
 
   const postProductHandler = async (data: any) => {
     const { title, description, categorie, price, adminPassword } = data;
@@ -125,4 +125,4 @@ const admin = () => {
   );
 };
 
-export default admin;
+export default Admin;
