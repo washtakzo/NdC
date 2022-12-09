@@ -14,7 +14,8 @@ const Header = () => {
 
   const opacity = scrollY / 2 / 100;
   const headerTranslation = "-" + (scrollY / 2 <= 54 ? scrollY / 2 : 54) + "%";
-  const headerHeigth = (200 - scrollY >= 80 ? 200 - scrollY : 80) + "px";
+  // const headerHeigth = (200 - scrollY >= 80 ? 200 - scrollY : 80) + "px";
+  const headerHeigth = 80 + "px";
 
   const scrollListener = () => {
     setScrollY(window.scrollY);
@@ -26,10 +27,6 @@ const Header = () => {
       removeEventListener("scroll", scrollListener);
     };
   }, []);
-
-  // const basketClickHandler = () => {
-  //   router.push("/basket");
-  // };
 
   //Basket Modal
   const isShowBasket = useSelector(
