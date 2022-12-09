@@ -8,7 +8,7 @@ const useHttp = () => {
     url: string,
     method: string = "GET",
     body: any = null,
-    headers: any = { "Content-Type": "application/json" }
+    headers: any = {}
   ) => {
     setIsLoading(true);
     try {

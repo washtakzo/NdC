@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 
 import Main from "../components/Main";
@@ -8,22 +8,41 @@ import MediumButton from "../components/MediumButton";
 import ImageUpload from "../components/ImageUpload";
 
 const BASE_URL = "http://localhost:9000";
+const PRODUCTS_URL = BASE_URL + "/api/products/";
 const inputClass = "block mx-auto border border-secondary rounded-lg my-4 p-2";
 
 const admin = () => {
   const [products, setProducts] = React.useState([]);
   const { isLoading, error, sendRequest } = useHttp();
   const { register, handleSubmit } = useForm();
-  const fileUploaderRef = useRef();
+  const [images, setImages] = useState();
+  console.log(products);
 
-  const postProductHandler = () => {
-    console.log("tet");
+  const postProductHandler = async (data: any) => {
+    const { title, description, categorie, price, adminPassword } = data;
+
+    const formData = new FormData();
+    formData.append("title", title);
+    formData.append("description", description);
+    formData.append("categorie", categorie);
+    formData.append("price", price);
+    formData.append("adminPassword", adminPassword);
+    formData.append("image", images[0]);
+    console.log({ formData });
+
+    try {
+      await sendRequest(PRODUCTS_URL, "POST", formData);
+    } catch (error) {
+      console.warn(error.message);
+    }
+
+    // window.location.reload();
   };
 
   const deleteProductHandler = async (productId: string) => {
     try {
       await sendRequest(
-        BASE_URL + "/api/products/" + productId,
+        PRODUCTS_URL + productId,
         "DELETE",
         JSON.stringify({ adminPassword: "Hamtargo1202" }),
         { "Content-Type": "application/json" }
@@ -44,7 +63,9 @@ const admin = () => {
   }, []);
   return (
     <Main>
-      <h1>{error && error.message}</h1>
+      <h1 className="text-center p-8 text-red-400 font-semibold">
+        {error && `error : ${error.message}`}
+      </h1>
       <section className="w-[80%] max-w-[800px] mx-auto">
         <h1 className="text-center font-serif text-3xl md:text-5xl">
           Post new product
@@ -74,7 +95,13 @@ const admin = () => {
             placeholder="price"
             {...register("price", { required: true })}
           />
-          <ImageUpload />
+          <input
+            className={inputClass}
+            type="test"
+            placeholder="Admin password"
+            {...register("adminPassword", { required: true })}
+          />
+          <ImageUpload onLoadImage={setImages} />
           <MediumButton type="submit">SUBMIT</MediumButton>
         </form>
       </section>

@@ -10,6 +10,8 @@ type Props = {
   images: string[];
 };
 
+const BASE_URL = "http://localhost:9000/";
+
 const ProductItem = ({ id, title, description, price, images }: Props) => {
   const secondaryImage = images[1] || images[0];
   const router = useRouter();
@@ -23,12 +25,12 @@ const ProductItem = ({ id, title, description, price, images }: Props) => {
     >
       <div className="relative">
         <img
-          src={images[0]}
+          src={BASE_URL + images[0]}
           alt={title}
           className="hover:opacity-0 transition-all duration-300 ease-in-out"
         />
         <img
-          src={secondaryImage}
+          src={BASE_URL + secondaryImage}
           alt={title}
           className=" absolute top-0 bottom-0 left-0 right-0 opacity-0 hover:opacity-100 transition-all duration-300 ease-in-out "
         />

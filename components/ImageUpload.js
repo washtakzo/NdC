@@ -2,12 +2,13 @@ import React from "react";
 
 import MediumButton from "./MediumButton";
 
-const ImageUpload = () => {
+const ImageUpload = ({ onLoadImage }) => {
   const fileUploaderRef = React.useRef();
   const [file, setFile] = React.useState();
   const [preview, setPreview] = React.useState();
 
-  const uploadImageHandler = () => {
+  const uploadImageHandler = (e) => {
+    e.preventDefault();
     fileUploaderRef.current.click();
   };
 
@@ -15,6 +16,7 @@ const ImageUpload = () => {
     const pickedFiles = event.target.files;
     if (!pickedFiles) return;
     setFile(pickedFiles[0]);
+    onLoadImage(pickedFiles);
   };
 
   React.useEffect(() => {

@@ -8,6 +8,11 @@
     "activityBar.background": "#0b0a1d",
     "breadcrumb.background": "#0b0a1d",
     "titleBar.activeBackground": "#0b0a1d",
-    "scrollbarSlider.background": "#454445bb"
+    "scrollbarSlider.background": "#454445bb",
+    "editorGroupHeader.tabsBackground": "#0b0a1d",
+    "editorGroupHeader.tabsBorder": "#141234",
+    "tab.inactiveBackground": "#0d0c22",
+    "tab.activeBackground": "#0e0d26",
+    "editor.lineHighlightBackground": "#251f38a4"
   }
 }
