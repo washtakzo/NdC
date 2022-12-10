@@ -14,5 +14,26 @@
     "tab.inactiveBackground": "#0d0c22",
     "tab.activeBackground": "#0e0d26",
     "editor.lineHighlightBackground": "#251f38a4"
+  },
+
+  //TO-DO Tree theme
+  "todo-tree.highlights.defaultHighlight": {
+    "icon": "alert",
+    "type": "text",
+    "foreground": "yellow",
+    "background": "grey",
+    "opacity": 80,
+    "iconColour": "blue"
+  },
+  "todo-tree.highlights.customHighlight": {
+    "TODO": {
+      "icon": "check",
+      "type": "line"
+    },
+    "FIXME": {
+      "foreground": "black",
+      "iconColour": "yellow",
+      "gutterIcon": true
+    }
   }
 }

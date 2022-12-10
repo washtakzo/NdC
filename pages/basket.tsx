@@ -1,3 +1,4 @@
+//TODO:isloading and error management
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { basketActions } from "../store/basket-slice";
@@ -7,6 +8,7 @@ import { BasketItem, Product } from "../helper/types";
 import MediumButton from "../components/MediumButton";
 import ModalBackground from "../components/ModalBackground";
 import { Portal } from "react-portal";
+import useHttp from "../hooks/useHttp";
 
 const Basket = () => {
   const basket = useSelector((store: any) => store.basketSection.basket);
@@ -14,6 +16,7 @@ const Basket = () => {
     (store: any) => store.basketSection.totalPrice
   );
   const dispatch = useDispatch();
+  const { isLoading, error, sendRequest } = useHttp();
 
   const removeProduct = (product: Product) =>
     dispatch(
@@ -41,6 +44,27 @@ const Basket = () => {
 
   const crossClickHandler = () => {
     dispatch(basketActions.toggleShowBasket());
+  };
+
+  const checkoutHandler = async () => {
+    //if basket empty, no need to send a request to the server
+    //however, the server would handle this kind of error anyway
+    if (basket.length === 0) return;
+
+    const formatedOrders = basket.map((item: BasketItem) => ({
+      id: item.product.id,
+      quantity: item.quantity,
+    }));
+    try {
+      const response = await sendRequest(
+        process.env.NEXT_PUBLIC_ORDERS_URL || "",
+        "POST",
+        JSON.stringify({ items: formatedOrders }),
+        { "Content-Type": "application/json" }
+      );
+      const stripeUrl = response.url;
+      window.open(stripeUrl, "_self");
+    } catch (error) {}
   };
 
   const noItemJSX = (
@@ -118,7 +142,9 @@ const Basket = () => {
             <p>Subtotal</p>
             <h4 className="font-bold">{totalPrice + " €"}</h4>
           </div>
-          <MediumButton className="">CONTINUE TO CHECKOUT</MediumButton>
+          <MediumButton onClick={checkoutHandler}>
+            CONTINUE TO CHECKOUT
+          </MediumButton>
         </div>
       </div>
     </Portal>

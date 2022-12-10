@@ -31,7 +31,11 @@ const Admin = () => {
     }
 
     try {
-      await sendRequest(process.env.NEXT_PUBLIC_PRODUCTS_URL, "POST", formData);
+      await sendRequest(
+        process.env.NEXT_PUBLIC_PRODUCTS_URL || "",
+        "POST",
+        formData
+      );
     } catch (error: any) {
       console.warn(error.message);
     }
@@ -54,7 +58,9 @@ const Admin = () => {
   React.useEffect(() => {
     const fetchData = async () => {
       try {
-        const data = await sendRequest(process.env.NEXT_PUBLIC_PRODUCTS_URL);
+        const data = await sendRequest(
+          process.env.NEXT_PUBLIC_PRODUCTS_URL || ""
+        );
         console.log({ data });
         setProducts(data?.products);
       } catch (error) {}
