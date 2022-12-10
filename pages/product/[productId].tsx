@@ -11,6 +11,7 @@ import { DUMMY_PRODUCTS } from "../../helper/dummy";
 import { Product } from "../../helper/types";
 import useHttp from "../../hooks/useHttp";
 
+//TODO:remplacer par variable denvironnement
 const PRODUCT_URL = "http://localhost:9000/api/products/";
 
 const ProductPage = () => {

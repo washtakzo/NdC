@@ -2,9 +2,6 @@ import React, { useEffect, useState } from "react";
 import ProductItem from "./ProductItem";
 import useHttp from "../../hooks/useHttp";
 
-const PRODUCTS_URL = "http://localhost:9000/api/products/";
-const CATEGORIE_URL = "http://localhost:9000/api/products/categorie/";
-
 const ShopSection = () => {
   const [products, setProducts] = useState([]);
   const [categorie, setCategorie] = useState("");
@@ -12,14 +9,16 @@ const ShopSection = () => {
 
   const fetchAllProducts = React.useCallback(async () => {
     try {
-      const response = await sendRequest(PRODUCTS_URL);
+      const response = await sendRequest(process.env.NEXT_PUBLIC_PRODUCTS_URL);
       setProducts(response.products);
     } catch (error: any) {}
   }, [sendRequest]);
 
   const fetchCategorieProducts = React.useCallback(async () => {
     try {
-      const response = await sendRequest(CATEGORIE_URL + categorie);
+      const response = await sendRequest(
+        process.env.NEXT_PUBLIC_PRODUCTS_CATEGORIE_URL + categorie
+      );
       setProducts(response.products);
     } catch (error: any) {}
   }, [sendRequest, categorie]);

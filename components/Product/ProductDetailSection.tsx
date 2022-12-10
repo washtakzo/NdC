@@ -11,7 +11,8 @@ type Props = {
   product: Product;
 };
 
-const BASE_URL = "http://localhost:9000/";
+// const BASE_URL = "http://localhost:9000/";
+// const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
 const ProductDetailSection = ({ product }: Props) => {
   const dispatch = useDispatch();
@@ -52,7 +53,7 @@ const ProductDetailSection = ({ product }: Props) => {
           <img
             key={imagePath}
             className="mb-4 last:mb-0 md:mb-16 md:last:mb-0"
-            src={BASE_URL + imagePath}
+            src={process.env.NEXT_PUBLIC_BASE_URL + imagePath}
             alt="product image"
             onClick={removeProductHandler}
           />

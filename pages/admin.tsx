@@ -9,8 +9,6 @@ import MediumButton from "../components/MediumButton";
 import ImageUpload from "../components/ImageUpload";
 import { Product } from "../helper/types";
 
-const BASE_URL = "http://localhost:9000";
-const PRODUCTS_URL = BASE_URL + "/api/products/";
 const inputClass = "block mx-auto border border-secondary rounded-lg my-4 p-2";
 
 const Admin = () => {
@@ -33,7 +31,7 @@ const Admin = () => {
     }
 
     try {
-      await sendRequest(PRODUCTS_URL, "POST", formData);
+      await sendRequest(process.env.NEXT_PUBLIC_PRODUCTS_URL, "POST", formData);
     } catch (error: any) {
       console.warn(error.message);
     }
@@ -44,7 +42,7 @@ const Admin = () => {
   const deleteProductHandler = async (productId: string) => {
     try {
       await sendRequest(
-        PRODUCTS_URL + productId,
+        process.env.NEXT_PUBLIC_PRODUCTS_URL + productId,
         "DELETE",
         JSON.stringify({ adminPassword: "Hamtargo1202" }),
         { "Content-Type": "application/json" }
@@ -56,7 +54,7 @@ const Admin = () => {
   React.useEffect(() => {
     const fetchData = async () => {
       try {
-        const data = await sendRequest(BASE_URL + "/api/products");
+        const data = await sendRequest(process.env.NEXT_PUBLIC_PRODUCTS_URL);
         console.log({ data });
         setProducts(data?.products);
       } catch (error) {}
