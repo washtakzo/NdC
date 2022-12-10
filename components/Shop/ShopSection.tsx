@@ -9,7 +9,9 @@ const ShopSection = () => {
 
   const fetchAllProducts = React.useCallback(async () => {
     try {
-      const response = await sendRequest(process.env.NEXT_PUBLIC_PRODUCTS_URL);
+      const response = await sendRequest(
+        process.env.NEXT_PUBLIC_PRODUCTS_URL || ""
+      );
       setProducts(response.products);
     } catch (error: any) {}
   }, [sendRequest]);

@@ -51,13 +51,13 @@ const Basket = () => {
     //however, the server would handle this kind of error anyway
     if (basket.length === 0) return;
 
-    const formatedOrders = basket.map((item) => ({
+    const formatedOrders = basket.map((item: BasketItem) => ({
       id: item.product.id,
       quantity: item.quantity,
     }));
     try {
       const response = await sendRequest(
-        process.env.NEXT_PUBLIC_ORDERS_URL,
+        process.env.NEXT_PUBLIC_ORDERS_URL || "",
         "POST",
         JSON.stringify({ items: formatedOrders }),
         { "Content-Type": "application/json" }
