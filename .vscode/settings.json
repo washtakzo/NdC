@@ -31,8 +31,10 @@
       "type": "line"
     },
     "FIXME": {
-      "foreground": "black",
+      "background": "grey",
+      "foreground": "orange",
       "iconColour": "yellow",
+      "type": "line",
       "gutterIcon": true
     }
   }

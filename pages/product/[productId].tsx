@@ -9,7 +9,9 @@ import ProductDetailSection from "../../components/Product/ProductDetailSection"
 import useHttp from "../../hooks/useHttp";
 import { PRODUCTS_URL } from "../../helper/url";
 
-//TODO:réglé l'erreur PRODUCTS_URL can be undefined - ci dessous je passe par une autre variable pour éviter ça
+//TODO:Handle error and loading state
+//TODO:set the quantity before adding to the cart
+//FIXME:réglé l'erreur PRODUCTS_URL can be undefined - ci dessous je passe par une autre variable pour éviter ça
 const URL_PRODUCTS: string = PRODUCTS_URL || "";
 
 const ProductPage = () => {

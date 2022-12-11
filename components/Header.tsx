@@ -57,9 +57,7 @@ const Header = () => {
               <Link href="/">Noce de coton</Link>
             </h2>
             <ul className="flex space-x-8">
-              <li className="header__liste_item sm:text-green-500 md:text-blue-500 lg:text-orange-500 xl:text-red-500">
-                Our Story
-              </li>
+              <li className="header__liste_item ">Our Story</li>
               <Link href="/shop" className="header__liste_item">
                 Shop
               </Link>

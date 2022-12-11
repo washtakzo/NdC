@@ -1,4 +1,3 @@
-//TODO:isloading and error management
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { basketActions } from "../store/basket-slice";
@@ -10,6 +9,11 @@ import ModalBackground from "../components/ModalBackground";
 import { Portal } from "react-portal";
 import useHttp from "../hooks/useHttp";
 import { ORDERS_URL, BASE_URL } from "../helper/url";
+
+//TODO:Mobile View : change quantity add one and remove one display
+//TODO:Mobile View : change checkout button position to be more visible ?
+//TODO:Stripe: change success and cancel pages
+//TODO:Handle error and loading state
 
 const Basket = () => {
   const basket = useSelector((store: any) => store.basketSection.basket);
