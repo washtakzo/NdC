@@ -4,13 +4,27 @@ import Paralax from "./Paralax";
 type Props = {
   scrollStartingPoint: number;
   paralaxSpeed: number;
+  isEven: boolean;
 };
 
-const Categorie = ({ scrollStartingPoint, paralaxSpeed }: Props) => {
+const Categorie = ({ scrollStartingPoint, paralaxSpeed, isEven }: Props) => {
+  //Managing the display left-right of the image and text to have beautiful effect
+  const sideTitleClass = isEven
+    ? "categorie__title_right"
+    : "categorie__title_left";
+  const sideImageClass = isEven
+    ? "categorie__image_right"
+    : "categorie__image_left";
+  const sideTextClass = isEven
+    ? "categorie__description_container_left"
+    : "categorie__description_container_right";
+
   return (
     <div className="categorie">
-      <h2 className="categorie__title font-serif text-6xl ">OUTFITS</h2>
-      <div className="categorie__description_container">
+      <h2 className={`categorie__title ${sideTitleClass} font-serif text-6xl`}>
+        OUTFITS
+      </h2>
+      <div className={`categorie__description_container ${sideTextClass}`}>
         <h3 className="font-serif  text-2xl sm:text-3xl">
           You can choose which collections you want to be featured on the main
           page. Its very simple, you can do it just in a matter of seconds!
@@ -20,7 +34,7 @@ const Categorie = ({ scrollStartingPoint, paralaxSpeed }: Props) => {
         </p>
       </div>
       <Paralax
-        className="categorie__image"
+        className={`categorie__image ${sideImageClass}`}
         scrollStartingPoint={scrollStartingPoint}
         paralaxSpeed={paralaxSpeed}
       >
