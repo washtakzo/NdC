@@ -10,7 +10,6 @@ import { Portal } from "react-portal";
 import useHttp from "../hooks/useHttp";
 import { ORDERS_URL, BASE_URL } from "../helper/url";
 
-//TODO:Mobile View : change quantity add one and remove one display
 //TODO:Mobile View : change checkout button position to be more visible ?
 //TODO:Stripe: change success and cancel pages
 //TODO:Handle error and loading state
@@ -94,7 +93,7 @@ const Basket = () => {
           {basket.map((item: BasketItem) => {
             return (
               <div key={item.product.id}>
-                <div className="flex justify-around items-center py-4 borders border-black">
+                <div className="flex flex-col sm:flex-row justify-around items-center py-4 borders border-black">
                   <div className="w-[25%]">
                     <img
                       src={BASE_URL + item.product.images[0]}
@@ -102,36 +101,39 @@ const Basket = () => {
                       className="mx-auto sm:p-4"
                     />
                   </div>
-                  <div className="w-[50%]">
-                    <h3 className="font-serif text-xl sm:text-2xl md:text-3xl">
+                  <div
+                    id="basket_product_info"
+                    className="w-[50%] flex-grow-0 mx-auto my-4 flex flex-col justify-around h-[100%]"
+                  >
+                    <h3 className="font-serif py-2 text-2xl sm:text-3xl md:text-4xl text-center">
                       {item.product.title}
                     </h3>
-                    <p className="my-2 text-xs sm:text-sm md:text-[1rem]">
+                    <p className="my-2 text-sm sm:text-sm md:text-[1rem] text-center">
                       {priceFormater(item.product.price)}
                     </p>
-                    <div className="">
+                    <div className="text-center flex my-4 justify-center">
                       <button
-                        className="text-third text-sm md:text-[1rem]"
+                        className="sm:mx-4 text-lg sm:font-bold text-third"
+                        onClick={() => removeProduct(item.product)}
+                      >
+                        -
+                      </button>
+                      <p className="px-4">{item.quantity}</p>
+                      <button
+                        className="sm:mx-4 text-lg sm:font-bold text-third"
+                        onClick={() => addProduct(item.product)}
+                      >
+                        +
+                      </button>
+                    </div>
+                    <div>
+                      <p
+                        className="text-third text-sm md:text-[1rem] text-center"
                         onClick={() => removeCompletProduct(item.product)}
                       >
                         Remove
-                      </button>
+                      </p>
                     </div>
-                  </div>
-                  <div className="text-center flex flex-col sm:flex-row">
-                    <button
-                      className="sm:mx-4 text-lg font-bold text-third"
-                      onClick={() => removeProduct(item.product)}
-                    >
-                      -
-                    </button>
-                    <p className="px-4">{item.quantity}</p>
-                    <button
-                      className="sm:mx-4 text-lg font-bold text-third"
-                      onClick={() => addProduct(item.product)}
-                    >
-                      +
-                    </button>
                   </div>
                 </div>
                 <div className="w-[95%] h-[1px] bg-third25 mx-auto" />
