@@ -4,18 +4,21 @@ import Paralax from "./Paralax";
 type Props = {
   scrollStartingPoint: number;
   paralaxSpeed: number;
-  isEven: boolean;
+  isStyleInverted: boolean;
 };
-//FIXME:image on large screen is on top text during paralax
-const Categorie = ({ scrollStartingPoint, paralaxSpeed, isEven }: Props) => {
+const Categorie = ({
+  scrollStartingPoint,
+  paralaxSpeed,
+  isStyleInverted = false,
+}: Props) => {
   //Managing the display left-right of the image and text to have beautiful effect
-  const sideTitleClass = isEven
+  const sideTitleClass = isStyleInverted
     ? "categorie__title_right"
     : "categorie__title_left";
-  const sideImageClass = isEven
+  const sideImageClass = isStyleInverted
     ? "categorie__image_right"
     : "categorie__image_left";
-  const sideTextClass = isEven
+  const sideTextClass = isStyleInverted
     ? "categorie__description_container_left"
     : "categorie__description_container_right";
 
