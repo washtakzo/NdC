@@ -1,28 +1,35 @@
 import React, { useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 
+import CategorieList from "../components/Admin/CategorieList";
 import Main from "../components/Main";
 import useHttp from "../hooks/useHttp";
 import ProductItem from "../components/Shop/ProductItem";
 import MediumButton from "../components/MediumButton";
 import ImageUpload from "../components/ImageUpload";
-import { Product } from "../helper/types";
+import { Product, Categories } from "../helper/types";
 import { PRODUCTS_URL } from "../helper/url";
 
 //TODO:Handle error and loading state
-//TODO:add a scroll menu for the categories
 //TODO:add is popularProduct check box
 
 const inputClass = "block mx-auto border border-secondary rounded-lg my-4 p-2";
 
 const Admin = () => {
+  const defaultCategorie = Categories.FAIRE_PART;
+
   const [products, setProducts] = React.useState([]);
+  const [categorie, setCategorie] = React.useState(defaultCategorie);
   const { isLoading, error, sendRequest } = useHttp();
   const { register, handleSubmit } = useForm();
   const [images, setImages] = useState<any[] | undefined>();
 
+  const categorieChangeHandler = (categorie: Categories) => {
+    setCategorie(categorie);
+  };
+
   const postProductHandler = async (data: any) => {
-    const { title, description, categorie, price, adminPassword } = data;
+    const { title, description, price, adminPassword } = data;
 
     const formData = new FormData();
     formData.append("title", title);
@@ -65,6 +72,7 @@ const Admin = () => {
     };
     fetchData();
   }, [sendRequest]);
+
   return (
     <Main>
       <h1 className="text-center p-8 text-red-400 font-semibold">
@@ -87,12 +95,12 @@ const Admin = () => {
             placeholder="description"
             {...register("description", { required: true })}
           />
-          <input
-            className={inputClass}
-            type="text"
-            placeholder="categorie"
-            {...register("categorie", { required: true })}
+          <CategorieList
+            className="w-[30%] mx-auto border border-secondary rounded-lg px-4 text-third"
+            defaultCategorie={defaultCategorie}
+            onCategorieChange={categorieChangeHandler}
           />
+
           <input
             className={inputClass}
             type="number"

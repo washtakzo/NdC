@@ -17,7 +17,7 @@ import { ORDERS_URL, BASE_URL } from "../helper/url";
 
 const Basket = () => {
   const basket = useSelector((store: any) => store.basketSection.basket);
-  const totalPrice = useSelector(
+  const totalPrice: number = useSelector(
     (store: any) => store.basketSection.totalPrice
   );
   const dispatch = useDispatch();
@@ -142,7 +142,7 @@ const Basket = () => {
         <div className="px-8 py-4 border-t border-third25 mt-2">
           <div className="flex justify-between">
             <p>Subtotal</p>
-            <h4 className="font-bold">{totalPrice + " €"}</h4>
+            <h4 className="font-bold">{totalPrice.toFixed(2) + " €"}</h4>
           </div>
           <MediumButton onClick={checkoutHandler}>
             CONTINUE TO CHECKOUT
