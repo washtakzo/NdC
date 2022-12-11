@@ -6,7 +6,7 @@ type Props = {
   paralaxSpeed: number;
   isEven: boolean;
 };
-
+//FIXME:image on large screen is on top text during paralax
 const Categorie = ({ scrollStartingPoint, paralaxSpeed, isEven }: Props) => {
   //Managing the display left-right of the image and text to have beautiful effect
   const sideTitleClass = isEven
@@ -40,7 +40,7 @@ const Categorie = ({ scrollStartingPoint, paralaxSpeed, isEven }: Props) => {
       >
         <img
           src="https://assets.website-files.com/601835c0c88eb62d2fa657a1/603950556cebb41723f0345f_kevin-laminto-saF4-j_NiHc-unsplash.jpg"
-          alt=""
+          alt="categorie shop illustration"
         />
       </Paralax>
     </div>

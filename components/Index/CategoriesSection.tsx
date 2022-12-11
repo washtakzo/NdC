@@ -6,7 +6,7 @@ const CategoriesSection = () => {
     <section>
       <Categorie paralaxSpeed={40} scrollStartingPoint={1000} isEven={true} />
       <Categorie paralaxSpeed={40} scrollStartingPoint={2100} isEven={false} />
-      <Categorie paralaxSpeed={40} scrollStartingPoint={3200} isEven={true} />
+      <Categorie paralaxSpeed={40} scrollStartingPoint={3800} isEven={true} />
     </section>
   );
 };
