@@ -2,28 +2,26 @@ import { useRouter } from "next/router";
 import React from "react";
 import Copyright from "../../components/Copyright";
 import Footer from "../../components/Footer";
-import Header from "../../components/Header";
 import AdvantagesSection from "../../components/Index/AdvantagesSection";
 import QuestionsSection from "../../components/Index/QuestionsSection";
 import Main from "../../components/Main";
 import ProductDetailSection from "../../components/Product/ProductDetailSection";
-import { DUMMY_PRODUCTS } from "../../helper/dummy";
-import { Product } from "../../helper/types";
 import useHttp from "../../hooks/useHttp";
+import { PRODUCTS_URL } from "../../helper/url";
 
-//TODO:remplacer par variable denvironnement
-const PRODUCT_URL = "http://localhost:9000/api/products/";
+//TODO:réglé l'erreur PRODUCTS_URL can be undefined - ci dessous je passe par une autre variable pour éviter ça
+const URL_PRODUCTS: string = PRODUCTS_URL || "";
 
 const ProductPage = () => {
   const router = useRouter();
-  const productId = router.query.productId;
+  const productId = router.query.productId || "";
   const { isLoading, error, sendRequest } = useHttp();
   const [product, setProduct] = React.useState();
 
   React.useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const response = await sendRequest(PRODUCT_URL + productId);
+        const response = await sendRequest(URL_PRODUCTS + productId);
         setProduct(response.product);
       } catch (error) {}
     };
