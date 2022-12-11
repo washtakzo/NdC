@@ -8,7 +8,7 @@ type Props = {
 const ErrorBox = ({ errorMessage = "An error occured", className }: Props) => {
   return (
     <div
-      className={`flex justify-center items-center text-red-400 font-bold w-[50%] text-center ${className}`}
+      className={`flex justify-center items-center text-red-400 font-bold w-[100%] text-center ${className}`}
     >
       {errorMessage}
     </div>

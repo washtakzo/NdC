@@ -75,7 +75,12 @@ const ShopSection = ({ defaultCategorie, onCategorieChange }: Props) => {
         </ul>
       </div>
       {isLoading && <LoadingSpinner />}
-      {!isLoading && error && <ErrorBox errorMessage={error?.message} />}
+      {!isLoading && error && (
+        <ErrorBox
+          errorMessage={error?.message}
+          className="!w-[80%] sm:!w-[50%] !mx-auto md:!mx-0 py-16"
+        />
+      )}
       {!isLoading && !error && (
         <div className="grid grid-cols-1 md:grid-cols-2 md:w-[60%]">
           {products.map(({ id, title, description, price, images }) => (
