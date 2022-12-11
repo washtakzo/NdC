@@ -2,14 +2,21 @@ import React, { useEffect, useState } from "react";
 import ProductItem from "./ProductItem";
 import useHttp from "../../hooks/useHttp";
 import { PRODUCTS_URL, CATEGORIE_URL } from "../../helper/url";
+import { Categories } from "../../helper/types";
 
-const ShopSection = () => {
+type Props = {
+  defaultCategorie: Categories;
+  onCategorieChange: (categorie: Categories) => void;
+};
+
+const ShopSection = ({ defaultCategorie, onCategorieChange }: Props) => {
   const [products, setProducts] = useState([]);
-  const [categorie, setCategorie] = useState("");
+  const [categorie, setCategorie] = useState(defaultCategorie);
   const { isLoading, error, sendRequest } = useHttp();
 
-  const clickCategorieHandler = (categorie: string) => {
+  const clickCategorieHandler = (categorie: Categories) => {
     setCategorie(categorie);
+    onCategorieChange(categorie);
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
@@ -22,13 +29,13 @@ const ShopSection = () => {
 
   const fetchCategorieProducts = React.useCallback(async () => {
     try {
-      const response = await sendRequest(CATEGORIE_URL + categorie);
+      const response = await sendRequest(CATEGORIE_URL! + categorie);
       setProducts(response.products);
     } catch (error: any) {}
   }, [sendRequest, categorie]);
 
   useEffect(() => {
-    if (!categorie) {
+    if (categorie === Categories.ALL) {
       fetchAllProducts();
     } else {
       fetchCategorieProducts();
@@ -41,25 +48,25 @@ const ShopSection = () => {
         <ul className=" md:sticky md:top-[10vh] lg:top-[36vh]">
           <li
             className="font-serif text-2xl my-4 cursor-pointer hover:text-third"
-            onClick={() => clickCategorieHandler("")}
+            onClick={() => clickCategorieHandler(Categories.ALL)}
           >
             Tous les produits
           </li>
           <li
             className="font-serif text-2xl my-4 cursor-pointer hover:text-third"
-            onClick={() => clickCategorieHandler("fairpart")}
+            onClick={() => clickCategorieHandler(Categories.FAIRE_PART)}
           >
             Fair Parts
           </li>
           <li
             className="font-serif text-2xl my-4 cursor-pointer hover:text-third"
-            onClick={() => clickCategorieHandler("plateau")}
+            onClick={() => clickCategorieHandler(Categories.PLATEAUX)}
           >
             Plateaux
           </li>
           <li
             className="font-serif text-2xl my-4 cursor-pointer hover:text-third"
-            onClick={() => clickCategorieHandler("boite")}
+            onClick={() => clickCategorieHandler(Categories.BOITE)}
           >
             Boites
           </li>
