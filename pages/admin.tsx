@@ -1,4 +1,3 @@
-//TODO: Handle error modal and loading state
 import React, { useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 
@@ -9,6 +8,10 @@ import MediumButton from "../components/MediumButton";
 import ImageUpload from "../components/ImageUpload";
 import { Product } from "../helper/types";
 import { PRODUCTS_URL } from "../helper/url";
+
+//TODO:Handle error and loading state
+//TODO:add a scroll menu for the categories
+//TODO:add is popularProduct check box
 
 const inputClass = "block mx-auto border border-secondary rounded-lg my-4 p-2";
 
