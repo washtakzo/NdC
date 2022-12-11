@@ -11,7 +11,6 @@ import { PRODUCTS_URL } from "../helper/url";
 
 //TODO:Handle error and loading state
 //TODO:add a scroll menu for the categories
-//TODO:fix price so it can be a float
 //TODO:add is popularProduct check box
 
 const inputClass = "block mx-auto border border-secondary rounded-lg my-4 p-2";
@@ -97,12 +96,13 @@ const Admin = () => {
           <input
             className={inputClass}
             type="number"
+            step={0.01}
             placeholder="price"
             {...register("price", { required: true })}
           />
           <input
             className={inputClass}
-            type="test"
+            type="text"
             placeholder="Admin password"
             {...register("adminPassword", { required: true })}
           />
