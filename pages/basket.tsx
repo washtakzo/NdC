@@ -9,6 +9,7 @@ import MediumButton from "../components/MediumButton";
 import ModalBackground from "../components/ModalBackground";
 import { Portal } from "react-portal";
 import useHttp from "../hooks/useHttp";
+import { ORDERS_URL, BASE_URL } from "../helper/url";
 
 const Basket = () => {
   const basket = useSelector((store: any) => store.basketSection.basket);
@@ -57,7 +58,7 @@ const Basket = () => {
     }));
     try {
       const response = await sendRequest(
-        process.env.NEXT_PUBLIC_ORDERS_URL || "",
+        ORDERS_URL || "",
         "POST",
         JSON.stringify({ items: formatedOrders }),
         { "Content-Type": "application/json" }
@@ -92,10 +93,7 @@ const Basket = () => {
                 <div className="flex justify-around items-center py-4 borders border-black">
                   <div className="w-[25%]">
                     <img
-                      src={
-                        process.env.NEXT_PUBLIC_BASE_URL +
-                        item.product.images[0]
-                      }
+                      src={BASE_URL + item.product.images[0]}
                       alt={item.product.title}
                       className="mx-auto sm:p-4"
                     />

@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import React from "react";
 import { priceFormater } from "../../helper/functions";
+import { BASE_URL } from "../../helper/url";
 
 type Props = {
   id: string;
@@ -23,12 +24,12 @@ const ProductItem = ({ id, title, description, price, images }: Props) => {
     >
       <div className="relative">
         <img
-          src={process.env.NEXT_PUBLIC_BASE_URL + images[0]}
+          src={BASE_URL + images[0]}
           alt={title}
           className="hover:opacity-0 transition-all duration-300 ease-in-out"
         />
         <img
-          src={process.env.NEXT_PUBLIC_BASE_URL + secondaryImage}
+          src={BASE_URL + secondaryImage}
           alt={title}
           className=" absolute top-0 bottom-0 left-0 right-0 opacity-0 hover:opacity-100 transition-all duration-300 ease-in-out "
         />

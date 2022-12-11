@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ProductItem from "./ProductItem";
 import useHttp from "../../hooks/useHttp";
+import { PRODUCTS_URL, CATEGORIE_URL } from "../../helper/url";
 
 const ShopSection = () => {
   const [products, setProducts] = useState([]);
@@ -9,18 +10,14 @@ const ShopSection = () => {
 
   const fetchAllProducts = React.useCallback(async () => {
     try {
-      const response = await sendRequest(
-        process.env.NEXT_PUBLIC_PRODUCTS_URL || ""
-      );
+      const response = await sendRequest(PRODUCTS_URL || "");
       setProducts(response.products);
     } catch (error: any) {}
   }, [sendRequest]);
 
   const fetchCategorieProducts = React.useCallback(async () => {
     try {
-      const response = await sendRequest(
-        process.env.NEXT_PUBLIC_PRODUCTS_CATEGORIE_URL + categorie
-      );
+      const response = await sendRequest(CATEGORIE_URL + categorie);
       setProducts(response.products);
     } catch (error: any) {}
   }, [sendRequest, categorie]);

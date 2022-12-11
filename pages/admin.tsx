@@ -8,6 +8,7 @@ import ProductItem from "../components/Shop/ProductItem";
 import MediumButton from "../components/MediumButton";
 import ImageUpload from "../components/ImageUpload";
 import { Product } from "../helper/types";
+import { PRODUCTS_URL } from "../helper/url";
 
 const inputClass = "block mx-auto border border-secondary rounded-lg my-4 p-2";
 
@@ -31,11 +32,7 @@ const Admin = () => {
     }
 
     try {
-      await sendRequest(
-        process.env.NEXT_PUBLIC_PRODUCTS_URL || "",
-        "POST",
-        formData
-      );
+      await sendRequest(PRODUCTS_URL || "", "POST", formData);
     } catch (error: any) {
       console.warn(error.message);
     }
@@ -46,7 +43,7 @@ const Admin = () => {
   const deleteProductHandler = async (productId: string) => {
     try {
       await sendRequest(
-        process.env.NEXT_PUBLIC_PRODUCTS_URL + productId,
+        PRODUCTS_URL + productId,
         "DELETE",
         JSON.stringify({ adminPassword: "Hamtargo1202" }),
         { "Content-Type": "application/json" }
@@ -58,9 +55,7 @@ const Admin = () => {
   React.useEffect(() => {
     const fetchData = async () => {
       try {
-        const data = await sendRequest(
-          process.env.NEXT_PUBLIC_PRODUCTS_URL || ""
-        );
+        const data = await sendRequest(PRODUCTS_URL || "");
         console.log({ data });
         setProducts(data?.products);
       } catch (error) {}
