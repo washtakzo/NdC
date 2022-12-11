@@ -8,6 +8,11 @@ const ShopSection = () => {
   const [categorie, setCategorie] = useState("");
   const { isLoading, error, sendRequest } = useHttp();
 
+  const clickCategorieHandler = (categorie: string) => {
+    setCategorie(categorie);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   const fetchAllProducts = React.useCallback(async () => {
     try {
       const response = await sendRequest(PRODUCTS_URL || "");
@@ -36,25 +41,25 @@ const ShopSection = () => {
         <ul className=" md:sticky md:top-[10vh] lg:top-[36vh]">
           <li
             className="font-serif text-2xl my-4 cursor-pointer hover:text-third"
-            onClick={() => setCategorie("")}
+            onClick={() => clickCategorieHandler("")}
           >
             Tous les produits
           </li>
           <li
             className="font-serif text-2xl my-4 cursor-pointer hover:text-third"
-            onClick={() => setCategorie("fairpart")}
+            onClick={() => clickCategorieHandler("fairpart")}
           >
             Fair Parts
           </li>
           <li
             className="font-serif text-2xl my-4 cursor-pointer hover:text-third"
-            onClick={() => setCategorie("plateau")}
+            onClick={() => clickCategorieHandler("plateau")}
           >
             Plateaux
           </li>
           <li
             className="font-serif text-2xl my-4 cursor-pointer hover:text-third"
-            onClick={() => setCategorie("boite")}
+            onClick={() => clickCategorieHandler("boite")}
           >
             Boites
           </li>

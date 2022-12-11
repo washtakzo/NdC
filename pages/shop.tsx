@@ -9,7 +9,6 @@ import ShopBanner from "../components/Shop/ShopBanner";
 import ShopSection from "../components/Shop/ShopSection";
 import AnimatedBackground from "../components/UI/AnimatedBackground";
 
-//TODO:Go back on top of the page at categorie click
 //TODO:Change Title according to the categorie choose
 //TODO:Handle Error and loading state
 
