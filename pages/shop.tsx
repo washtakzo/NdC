@@ -10,8 +10,6 @@ import AnimatedBackground from "../components/UI/AnimatedBackground";
 import { Categories } from "../helper/types";
 import { capitalize } from "../helper/functions";
 
-//TODO:Handle Error and loading state
-
 const shop = () => {
   const defaultCategorie = Categories.ALL;
   const [bannerTitle, setBannerTitle] = useState(defaultCategorie);
