@@ -10,7 +10,7 @@ import { Portal } from "react-portal";
 import useHttp from "../hooks/useHttp";
 import { ORDERS_URL, BASE_URL } from "../helper/url";
 
-//TODO:Mobile View : change checkout button position to be more visible ?
+//TODO:Mobile View : change checkout button position to be more visible ? floating ?
 //TODO:Stripe: change success and cancel pages
 //TODO:Handle error and loading state
 
@@ -128,7 +128,7 @@ const Basket = () => {
                     </div>
                     <div>
                       <p
-                        className="text-third text-sm md:text-[1rem] text-center"
+                        className="text-third text-sm md:text-[1rem] text-center cursor-pointer"
                         onClick={() => removeCompletProduct(item.product)}
                       >
                         Remove
