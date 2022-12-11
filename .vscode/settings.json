@@ -21,7 +21,7 @@
     "icon": "alert",
     "type": "text",
     "foreground": "yellow",
-    "background": "grey",
+    "background": "#A691DB",
     "opacity": 80,
     "iconColour": "blue"
   },
@@ -31,8 +31,8 @@
       "type": "line"
     },
     "FIXME": {
-      "background": "grey",
-      "foreground": "orange",
+      "background": "#e75480",
+      "foreground": "yellow",
       "iconColour": "yellow",
       "type": "line",
       "gutterIcon": true

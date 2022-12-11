@@ -10,9 +10,6 @@ import useHttp from "../../hooks/useHttp";
 import { PRODUCTS_URL } from "../../helper/url";
 
 //TODO:Handle error and loading state
-//TODO:set the quantity before adding to the cart
-//FIXME:réglé l'erreur PRODUCTS_URL can be undefined - ci dessous je passe par une autre variable pour éviter ça
-const URL_PRODUCTS: string = PRODUCTS_URL || "";
 
 const ProductPage = () => {
   const router = useRouter();
@@ -23,7 +20,7 @@ const ProductPage = () => {
   React.useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const response = await sendRequest(URL_PRODUCTS + productId);
+        const response = await sendRequest(PRODUCTS_URL! + productId);
         setProduct(response.product);
       } catch (error) {}
     };

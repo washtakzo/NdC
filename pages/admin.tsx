@@ -11,6 +11,7 @@ import { PRODUCTS_URL } from "../helper/url";
 
 //TODO:Handle error and loading state
 //TODO:add a scroll menu for the categories
+//TODO:fix price so it can be a float
 //TODO:add is popularProduct check box
 
 const inputClass = "block mx-auto border border-secondary rounded-lg my-4 p-2";
