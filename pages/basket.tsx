@@ -92,7 +92,9 @@ const Basket = () => {
             />
           </div>
           {basket.length === 0 && noItemJSX}
-          {error && <ErrorBox className="p-4" errorMessage={error?.message} />}
+          {!isLoading && error && (
+            <ErrorBox className="p-4" errorMessage={error?.message} />
+          )}
           {basket.map((item: BasketItem) => {
             return (
               <div key={item.product.id}>

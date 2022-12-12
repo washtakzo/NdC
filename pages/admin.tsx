@@ -9,6 +9,8 @@ import MediumButton from "../components/MediumButton";
 import ImageUpload from "../components/ImageUpload";
 import { Product, Categories } from "../helper/types";
 import { PRODUCTS_URL } from "../helper/url";
+import LoadingSpinner from "../components/LoadingSpinner";
+import ErrorBox from "../components/ErrorBox";
 
 //TODO:Handle error and loading state
 //TODO:add is popularProduct check box
@@ -75,6 +77,14 @@ const Admin = () => {
 
   return (
     <Main>
+      {isLoading && <LoadingSpinner />}
+
+      {!isLoading && error && (
+        <ErrorBox
+          className="p-8 max-w-[800px] mx-auto"
+          errorMessage={error?.message}
+        />
+      )}
       <h1 className="text-center p-8 text-red-400 font-semibold">
         {error && `error : ${error.message}`}
       </h1>
