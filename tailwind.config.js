@@ -12,6 +12,7 @@ module.exports = {
         secondary50: "#E2D7D79A",
         third: "#907070",
         third25: "#90707030",
+        overlay: "#E2D7D79A",
       },
       fontFamily: {
         serif: ["Italiana", "serif"],

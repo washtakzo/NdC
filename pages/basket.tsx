@@ -9,10 +9,11 @@ import ModalBackground from "../components/ModalBackground";
 import { Portal } from "react-portal";
 import useHttp from "../hooks/useHttp";
 import { ORDERS_URL, BASE_URL } from "../helper/url";
+import LoadingSpinner from "../components/LoadingSpinner";
+import ErrorBox from "../components/ErrorBox";
 
 //TODO:Mobile View : change checkout button position to be more visible ? floating ?
 //TODO:Stripe: change success and cancel pages
-//TODO:Handle error and loading state
 
 const Basket = () => {
   const basket = useSelector((store: any) => store.basketSection.basket);
@@ -79,6 +80,7 @@ const Basket = () => {
 
   return (
     <Portal>
+      {isLoading && <LoadingSpinner />}
       <ModalBackground />
       <div className="h-screen flex flex-col justify-between fixed top-0 right-0 bg-white z-50 md:w-[60%] lg:w-[50%] xl:w-[800px] overflow-y-auto">
         <div>
@@ -90,6 +92,7 @@ const Basket = () => {
             />
           </div>
           {basket.length === 0 && noItemJSX}
+          {error && <ErrorBox className="p-4" errorMessage={error?.message} />}
           {basket.map((item: BasketItem) => {
             return (
               <div key={item.product.id}>
