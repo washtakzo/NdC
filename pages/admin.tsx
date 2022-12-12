@@ -12,7 +12,6 @@ import { PRODUCTS_URL } from "../helper/url";
 import LoadingSpinner from "../components/LoadingSpinner";
 import ErrorBox from "../components/ErrorBox";
 
-//TODO:Handle error and loading state
 //TODO:add is popularProduct check box
 
 const inputClass = "block mx-auto border border-secondary rounded-lg my-4 p-2";
@@ -106,7 +105,7 @@ const Admin = () => {
             {...register("description", { required: true })}
           />
           <CategorieList
-            className="w-[30%] mx-auto border border-secondary rounded-lg px-4 text-third"
+            className="w-[30%] min-w-[200px] mx-auto border border-secondary rounded-lg px-4 text-third"
             defaultCategorie={defaultCategorie}
             onCategorieChange={categorieChangeHandler}
           />
