@@ -9,15 +9,15 @@ import ModalBackground from "../components/ModalBackground";
 import { Portal } from "react-portal";
 import useHttp from "../hooks/useHttp";
 import { ORDERS_URL, BASE_URL } from "../helper/url";
+import LoadingSpinner from "../components/LoadingSpinner";
+import ErrorBox from "../components/ErrorBox";
 
-//TODO:Mobile View : change quantity add one and remove one display
-//TODO:Mobile View : change checkout button position to be more visible ?
+//TODO:Mobile View : change checkout button position to be more visible ? floating ?
 //TODO:Stripe: change success and cancel pages
-//TODO:Handle error and loading state
 
 const Basket = () => {
   const basket = useSelector((store: any) => store.basketSection.basket);
-  const totalPrice = useSelector(
+  const totalPrice: number = useSelector(
     (store: any) => store.basketSection.totalPrice
   );
   const dispatch = useDispatch();
@@ -80,6 +80,7 @@ const Basket = () => {
 
   return (
     <Portal>
+      {isLoading && <LoadingSpinner />}
       <ModalBackground />
       <div className="h-screen flex flex-col justify-between fixed top-0 right-0 bg-white z-50 md:w-[60%] lg:w-[50%] xl:w-[800px] overflow-y-auto">
         <div>
@@ -91,10 +92,13 @@ const Basket = () => {
             />
           </div>
           {basket.length === 0 && noItemJSX}
+          {!isLoading && error && (
+            <ErrorBox className="p-4" errorMessage={error?.message} />
+          )}
           {basket.map((item: BasketItem) => {
             return (
               <div key={item.product.id}>
-                <div className="flex justify-around items-center py-4 borders border-black">
+                <div className="flex flex-col sm:flex-row justify-around items-center py-4 borders border-black">
                   <div className="w-[25%]">
                     <img
                       src={BASE_URL + item.product.images[0]}
@@ -102,36 +106,39 @@ const Basket = () => {
                       className="mx-auto sm:p-4"
                     />
                   </div>
-                  <div className="w-[50%]">
-                    <h3 className="font-serif text-xl sm:text-2xl md:text-3xl">
+                  <div
+                    id="basket_product_info"
+                    className="w-[50%] flex-grow-0 mx-auto my-4 flex flex-col justify-around h-[100%]"
+                  >
+                    <h3 className="font-serif py-2 text-2xl sm:text-3xl md:text-4xl text-center">
                       {item.product.title}
                     </h3>
-                    <p className="my-2 text-xs sm:text-sm md:text-[1rem]">
+                    <p className="my-2 text-sm sm:text-sm md:text-[1rem] text-center">
                       {priceFormater(item.product.price)}
                     </p>
-                    <div className="">
+                    <div className="text-center flex my-4 justify-center">
                       <button
-                        className="text-third text-sm md:text-[1rem]"
+                        className="sm:mx-4 text-lg sm:font-bold text-third"
+                        onClick={() => removeProduct(item.product)}
+                      >
+                        -
+                      </button>
+                      <p className="px-4">{item.quantity}</p>
+                      <button
+                        className="sm:mx-4 text-lg sm:font-bold text-third"
+                        onClick={() => addProduct(item.product)}
+                      >
+                        +
+                      </button>
+                    </div>
+                    <div>
+                      <p
+                        className="text-third text-sm md:text-[1rem] text-center cursor-pointer"
                         onClick={() => removeCompletProduct(item.product)}
                       >
                         Remove
-                      </button>
+                      </p>
                     </div>
-                  </div>
-                  <div className="text-center flex flex-col sm:flex-row">
-                    <button
-                      className="sm:mx-4 text-lg font-bold text-third"
-                      onClick={() => removeProduct(item.product)}
-                    >
-                      -
-                    </button>
-                    <p className="px-4">{item.quantity}</p>
-                    <button
-                      className="sm:mx-4 text-lg font-bold text-third"
-                      onClick={() => addProduct(item.product)}
-                    >
-                      +
-                    </button>
                   </div>
                 </div>
                 <div className="w-[95%] h-[1px] bg-third25 mx-auto" />
@@ -142,7 +149,7 @@ const Basket = () => {
         <div className="px-8 py-4 border-t border-third25 mt-2">
           <div className="flex justify-between">
             <p>Subtotal</p>
-            <h4 className="font-bold">{totalPrice + " €"}</h4>
+            <h4 className="font-bold">{totalPrice.toFixed(2) + " €"}</h4>
           </div>
           <MediumButton onClick={checkoutHandler}>
             CONTINUE TO CHECKOUT

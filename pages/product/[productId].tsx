@@ -8,11 +8,8 @@ import Main from "../../components/Main";
 import ProductDetailSection from "../../components/Product/ProductDetailSection";
 import useHttp from "../../hooks/useHttp";
 import { PRODUCTS_URL } from "../../helper/url";
-
-//TODO:Handle error and loading state
-//TODO:set the quantity before adding to the cart
-//FIXME:réglé l'erreur PRODUCTS_URL can be undefined - ci dessous je passe par une autre variable pour éviter ça
-const URL_PRODUCTS: string = PRODUCTS_URL || "";
+import ErrorBox from "../../components/ErrorBox";
+import LoadingSpinner from "../../components/LoadingSpinner";
 
 const ProductPage = () => {
   const router = useRouter();
@@ -23,7 +20,7 @@ const ProductPage = () => {
   React.useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const response = await sendRequest(URL_PRODUCTS + productId);
+        const response = await sendRequest(PRODUCTS_URL! + productId);
         setProduct(response.product);
       } catch (error) {}
     };
@@ -41,8 +38,12 @@ const ProductPage = () => {
   return (
     <>
       <Main className="bg-primary">
-        {!product && NoProductFoundErrorJSX}
-        {product && <ProductDetailSection product={product} />}
+        {isLoading && <LoadingSpinner />}
+        {!isLoading && !error && !product && NoProductFoundErrorJSX}
+        {!isLoading && error && <ErrorBox errorMessage={error?.message} />}
+        {!isLoading && product && !error && (
+          <ProductDetailSection product={product} />
+        )}
         <AdvantagesSection />
         <QuestionsSection />
         <Footer />

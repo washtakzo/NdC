@@ -3,7 +3,7 @@ import React, { useState } from "react";
 const useHttp = () => {
   const [isLoading, setIsLoading] = useState(false);
 
-  const [error, setError] = useState<Error | undefined>();
+  const [error, setError] = useState<Error | undefined | null>();
   const sendRequest = React.useCallback(
     async (
       url: string,
@@ -12,6 +12,7 @@ const useHttp = () => {
       headers: any = {}
     ) => {
       setIsLoading(true);
+      setError(null);
       try {
         const response = await fetch(url, {
           method: method,

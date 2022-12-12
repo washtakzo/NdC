@@ -11,7 +11,6 @@ import QuestionsSection from "../components/Index/QuestionsSection";
 import Main from "../components/Main";
 import AnimatedBackground from "../components/UI/AnimatedBackground";
 
-//TODO:Categorie à mettre en quinconce
 //TODO:Mettre en place une variable isPopular dans la database product et affiché les popular product et dans la page admin pouvoir modifié isPopular
 //TODO: Mettre des images et linké le instagram
 

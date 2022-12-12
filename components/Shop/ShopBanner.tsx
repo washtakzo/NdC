@@ -1,10 +1,14 @@
 import React from "react";
 
-const ShopBanner = () => {
+type Props = {
+  title?: string;
+};
+
+const ShopBanner = ({ title }: Props) => {
   return (
     <div className="flex justify-center items-center h-[240px] w-full border-b border-black">
       <h2 className="font-serif text-[12vw] sm:text-[8vw] md:text-[7vw] text-center">
-        All Products
+        {title}
       </h2>
     </div>
   );

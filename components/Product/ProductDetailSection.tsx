@@ -1,26 +1,30 @@
-import React from "react";
+import React, { useRef } from "react";
 import { priceFormater } from "../../helper/functions";
 import Accordion from "../Accordion";
 import InputQuantity from "../InputQuantity";
 import MediumButton from "../MediumButton";
 import { useDispatch } from "react-redux";
 import { basketActions } from "../../store/basket-slice";
-import { Product } from "../../helper/types";
+import { Product, Categories } from "../../helper/types";
 import { BASE_URL } from "../../helper/url";
 
 type Props = {
   product: Product;
 };
-
 const ProductDetailSection = ({ product }: Props) => {
   const dispatch = useDispatch();
+  const inputRef = useRef<any>();
+
+  const minimumQuantity = product.categorie === Categories.FAIRE_PART ? 50 : 1;
+  const stepQuantity = product.categorie === Categories.FAIRE_PART ? 10 : 1;
 
   const addProductHandler = () => {
-    dispatch(basketActions.addProduct({ product: product, quantity: 1 }));
-  };
-
-  const removeProductHandler = () => {
-    dispatch(basketActions.removeProduct({ product: product, quantity: 1 }));
+    dispatch(
+      basketActions.addProduct({
+        product: product,
+        quantity: +inputRef.current.value || 1,
+      })
+    );
   };
 
   return (
@@ -34,7 +38,13 @@ const ProductDetailSection = ({ product }: Props) => {
             {product?.title}
           </h1>
           <p className="text-lg">{priceFormater(product?.price)}</p>
-          <InputQuantity type="number" min={50} step={10} defaultValue={50} />
+          <InputQuantity
+            type="number"
+            ref={inputRef}
+            min={minimumQuantity}
+            step={stepQuantity}
+            defaultValue={minimumQuantity}
+          />
           <MediumButton onClick={addProductHandler}>ADD TO CART</MediumButton>
           <p>{product?.description}</p>
           <div className="my-8 lg:my-16">
@@ -53,7 +63,6 @@ const ProductDetailSection = ({ product }: Props) => {
             className="mb-4 last:mb-0 md:mb-16 md:last:mb-0"
             src={BASE_URL + imagePath}
             alt="product image"
-            onClick={removeProductHandler}
           />
         ))}
       </div>
