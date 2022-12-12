@@ -3,7 +3,7 @@ import ProductItem from "./ProductItem";
 import useHttp from "../../hooks/useHttp";
 import { PRODUCTS_URL, CATEGORIE_URL } from "../../helper/url";
 import { Categories } from "../../helper/types";
-import LoadingSpinner from "../LoadingSpinner";
+import LoadingSpinner from "../UI/LoadingSpinner";
 import ErrorBox from "../ErrorBox";
 
 type Props = {

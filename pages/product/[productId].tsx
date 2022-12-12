@@ -9,7 +9,7 @@ import ProductDetailSection from "../../components/Product/ProductDetailSection"
 import useHttp from "../../hooks/useHttp";
 import { PRODUCTS_URL } from "../../helper/url";
 import ErrorBox from "../../components/ErrorBox";
-import LoadingSpinner from "../../components/LoadingSpinner";
+import LoadingSpinner from "../../components/UI/LoadingSpinner";
 
 const ProductPage = () => {
   const router = useRouter();
