@@ -20,4 +20,6 @@ const InputQuantity = React.forwardRef<Props, any>((props: Props, ref: any) => {
   );
 });
 
+InputQuantity.displayName = "InputQuantity";
+
 export default InputQuantity;

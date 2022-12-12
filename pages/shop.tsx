@@ -10,7 +10,7 @@ import AnimatedBackground from "../components/UI/AnimatedBackground";
 import { Categories } from "../helper/types";
 import { capitalize } from "../helper/functions";
 
-const shop = () => {
+const Shop = () => {
   const defaultCategorie = Categories.ALL;
   const [bannerTitle, setBannerTitle] = useState(defaultCategorie);
 
@@ -36,4 +36,4 @@ const shop = () => {
   );
 };
 
-export default shop;
+export default Shop;
