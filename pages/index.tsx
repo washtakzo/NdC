@@ -13,7 +13,6 @@ import AnimatedBackground from "../components/UI/AnimatedBackground";
 
 //TODO:Mettre en place une variable isPopular dans la database product et affiché les popular product et dans la page admin pouvoir modifié isPopular
 //TODO: Mettre des images et linké le instagram
-//TODO:changer la couleur du LoadingSpinner
 
 export default function Home() {
   return (
