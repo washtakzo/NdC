@@ -12,6 +12,7 @@ const useHttp = () => {
       headers: any = {}
     ) => {
       setIsLoading(true);
+      setError(null);
       try {
         const response = await fetch(url, {
           method: method,
