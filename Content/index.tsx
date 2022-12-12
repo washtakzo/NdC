@@ -10,34 +10,34 @@ const titre: string =
   "Noce de coton vous accompagne dans les moments les plus festif de votre vie";
 
 const introduction: string =
-  "Nous proposant faire-part, et accessoires décoratif élégant et tendance";
+  "Nous proposont faire-part, et accessoires décoratif élégant et tendance";
 
 const categoriesIntroduction: {
   image: string;
   title: Categories;
   text: string;
-  sousText: string;
+  subtitle: string;
 }[] = [
   {
     image:
       "https://www.wedding-spot.com/blog/sites/wsblog/files/styles/webp_desktop/public/images/migrated/273-Bride%2Band%2Bgroom%2Bclose%2Bup%2Bsaying%2Btheir%2Bvows%2Bduring%2Bwedding%2Bceremony.jpg.webp?itok=fecBNiSf",
     title: Categories.FAIRE_PART,
     text: "Invitez vos proche de la plus belle des manière en leurs envoyant d'élégents faire-part personalisable à souhait pour que votre invitation soit unique.",
-    sousText: "Consultez nos faire-part",
+    subtitle: "Consultez nos faire-part",
   },
   {
     image:
       "https://www.tasteofhome.com/wp-content/uploads/2022/06/safari-baby-shower-theme-ecomm-via-amazon.jpg?fit=700,700",
     title: Categories.BOITE,
     text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi doloribus nesciunt nam molestias facilis exercitationem recusandae labore !",
-    sousText: "Consultez nos coffrets",
+    subtitle: "Consultez nos coffrets",
   },
   {
     image:
       "https://images.unsplash.com/photo-1587752889012-a8dc4999e438?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDE4fHx8ZW58MHx8fHw%3D&w=1000&q=80",
     title: Categories.PLATEAUX,
     text: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Blanditiis autem nihil repellendus sit! In sapiente odio harum accusamus. Praesentium a doloribus impedit officiis est mollitia.",
-    sousText: "Consultez nos plateaux",
+    subtitle: "Consultez nos plateaux",
   },
 ];
 
@@ -64,7 +64,7 @@ const questionsAnswers: {
   answer: string;
 }[] = [
   {
-    question: "Comment ce passe une commande ?",
+    question: "Comment se passe une commande ?",
     answer:
       "Vous pouvez choisir vos produits sur notre site et nous vous contacterons par téléphone après votre commande pour définir ensemble de la personalisation que vous souhaitez. Vous pouvez également nous contactez sur notre instagram pour nous poser toutes questions nécessaire avant de passer commande, nous répondant rapidement à vos intérogations.",
   },

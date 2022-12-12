@@ -5,11 +5,19 @@ type Props = {
   scrollStartingPoint: number;
   paralaxSpeed: number;
   isStyleInverted: boolean;
+  image: string;
+  title: string;
+  text: string;
+  subtitle: string;
 };
 const Categorie = ({
   scrollStartingPoint,
   paralaxSpeed,
   isStyleInverted = false,
+  image,
+  title,
+  text,
+  subtitle,
 }: Props) => {
   //Managing the display left-right of the image and text to have beautiful effect
   const sideTitleClass = isStyleInverted
@@ -25,15 +33,12 @@ const Categorie = ({
   return (
     <div className="categorie">
       <h2 className={`categorie__title ${sideTitleClass} font-serif text-6xl`}>
-        OUTFITS
+        {title}
       </h2>
       <div className={`categorie__description_container ${sideTextClass}`}>
-        <h3 className="font-serif  text-2xl sm:text-3xl">
-          You can choose which collections you want to be featured on the main
-          page. Its very simple, you can do it just in a matter of seconds!
-        </h3>
+        <h3 className="font-serif  text-2xl sm:text-3xl">{text}</h3>
         <p className="text-third text-xs sm:text-sm md:text-lg my-4">
-          Shop Collection
+          {subtitle}
         </p>
       </div>
       <Paralax
@@ -41,10 +46,7 @@ const Categorie = ({
         scrollStartingPoint={scrollStartingPoint}
         paralaxSpeed={paralaxSpeed}
       >
-        <img
-          src="https://assets.website-files.com/601835c0c88eb62d2fa657a1/603950556cebb41723f0345f_kevin-laminto-saF4-j_NiHc-unsplash.jpg"
-          alt="categorie shop illustration"
-        />
+        <img src={image} alt="categorie shop illustration" />
       </Paralax>
     </div>
   );

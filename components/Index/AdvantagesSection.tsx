@@ -1,5 +1,6 @@
 import React from "react";
 import Advantage from "../Advantage";
+import IndexContent from "../../Content/index";
 
 const AdvantagesSection = () => {
   return (
@@ -13,9 +14,13 @@ const AdvantagesSection = () => {
         <div className="hidden md:block w-[80%] max-w-[400px] aspect-square absolute -left-[20%] top-[40%] rounded-full border border-black lg:top-[10%] lg:max-w-[70vh]" />
       </div>
       <div className="md:border border-blacks md:w-[50%] flex flex-col justify-around">
-        <Advantage />
-        <Advantage />
-        <Advantage />
+        {IndexContent.advantages.map((advantage) => (
+          <Advantage
+            key={advantage.title}
+            title={advantage.title}
+            text={advantage.text}
+          />
+        ))}
       </div>
     </section>
   );
