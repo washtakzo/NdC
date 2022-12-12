@@ -3,7 +3,7 @@ import React, { useState } from "react";
 const useHttp = () => {
   const [isLoading, setIsLoading] = useState(false);
 
-  const [error, setError] = useState<Error | undefined>();
+  const [error, setError] = useState<Error | undefined | null>();
   const sendRequest = React.useCallback(
     async (
       url: string,
