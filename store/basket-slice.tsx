@@ -26,8 +26,6 @@ const updateOtherState = (state: BasketSlice) => {
   state.totalPrice = state.basket.reduce((total: number, item: BasketItem) => {
     return (total += item.product.price * item.quantity);
   }, 0);
-
-  console.log(state.totalPrice);
 };
 
 const initialState: BasketSlice = {
@@ -77,8 +75,6 @@ const basketSlice = createSlice({
       );
 
       const isProductInBasket = productIndex > -1;
-      console.log({ isProductInBasket });
-      console.log(state.basket);
 
       if (isProductInBasket) {
         state.basket[productIndex].quantity -= quantityToRemove;
