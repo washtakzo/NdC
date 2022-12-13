@@ -54,7 +54,7 @@ const Header = () => {
             style={{ transform: `translateY(${headerTranslation})` }}
           >
             <h2 className="inline-flex font-semibold text-3xl mb-8 cursor-pointer font-serif">
-              <Link href="/">Noce de coton</Link>
+              <Link href="/">Noces de coton</Link>
             </h2>
             <ul className="flex space-x-8">
               <li className="header__liste_item ">Our Story</li>
@@ -69,7 +69,7 @@ const Header = () => {
               <li>
                 <div>
                   {/* Search Icon */}
-                  <svg
+                  {/* <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"
@@ -82,7 +82,7 @@ const Header = () => {
                       strokeLinejoin="round"
                       d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
                     />
-                  </svg>
+                  </svg> */}
                 </div>
               </li>
               <li>

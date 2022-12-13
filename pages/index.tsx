@@ -1,6 +1,5 @@
 import Copyright from "../components/Copyright";
 import Footer from "../components/Footer";
-import Header from "../components/Header";
 import AdvantagesSection from "../components/Index/AdvantagesSection";
 import CategoriesSection from "../components/Index/CategoriesSection";
 import InstagramSection from "../components/Index/InstagramSection";
@@ -13,6 +12,7 @@ import AnimatedBackground from "../components/UI/AnimatedBackground";
 
 //TODO:Mettre en place une variable isPopular dans la database product et affiché les popular product et dans la page admin pouvoir modifié isPopular
 //TODO: Mettre des images et linké le instagram
+//TODO: demander le num de telephone sur stripe
 
 export default function Home() {
   return (

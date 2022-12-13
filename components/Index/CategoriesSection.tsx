@@ -1,24 +1,26 @@
 import React from "react";
 import Categorie from "../Categorie";
+import IndexContent from "../../Content/IndexContent";
 
 const CategoriesSection = () => {
   return (
     <section>
-      <Categorie
-        paralaxSpeed={40}
-        scrollStartingPoint={1000}
-        isStyleInverted={true}
-      />
-      <Categorie
-        paralaxSpeed={40}
-        scrollStartingPoint={2100}
-        isStyleInverted={false}
-      />
-      <Categorie
-        paralaxSpeed={40}
-        scrollStartingPoint={3800}
-        isStyleInverted={true}
-      />
+      {IndexContent.categoriesIntroduction.map((item, index) => {
+        const isEven = index % 2 === 0;
+        const paralaxStartingPoint = 1000 + index * 1200;
+        return (
+          <Categorie
+            key={item.title}
+            paralaxSpeed={40}
+            scrollStartingPoint={paralaxStartingPoint}
+            isStyleInverted={isEven}
+            image={item.image}
+            title={item.title}
+            text={item.text}
+            subtitle={item.subtitle}
+          />
+        );
+      })}
     </section>
   );
 };

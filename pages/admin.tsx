@@ -9,7 +9,7 @@ import MediumButton from "../components/MediumButton";
 import ImageUpload from "../components/ImageUpload";
 import { Product, Categories } from "../helper/types";
 import { PRODUCTS_URL } from "../helper/url";
-import LoadingSpinner from "../components/LoadingSpinner";
+import LoadingSpinner from "../components/UI/LoadingSpinner";
 import ErrorBox from "../components/ErrorBox";
 
 //TODO:add is popularProduct check box

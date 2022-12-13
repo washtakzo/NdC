@@ -9,7 +9,7 @@ import ModalBackground from "../components/ModalBackground";
 import { Portal } from "react-portal";
 import useHttp from "../hooks/useHttp";
 import { ORDERS_URL, BASE_URL } from "../helper/url";
-import LoadingSpinner from "../components/LoadingSpinner";
+import LoadingSpinner from "../components/UI/LoadingSpinner";
 import ErrorBox from "../components/ErrorBox";
 
 //TODO:Mobile View : change checkout button position to be more visible ? floating ?
