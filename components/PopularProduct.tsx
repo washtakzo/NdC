@@ -19,7 +19,7 @@ const PopularProduct = ({ id, image, title, price }: Props) => {
 
   return (
     <div
-      className=" flex justify-center items-center mx-auto w-full px-8 cursor-pointer"
+      className=" flex justify-center items-center mx-auto w-full px-8 cursor-pointer hover:scale-105 transition-all duration-300 ease-in-out"
       onClick={clickHandler}
     >
       <div className="my-8 mx-auto">
