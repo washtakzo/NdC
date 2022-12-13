@@ -1,8 +1,4 @@
 import { Categories } from "../helper/types";
-import insta1 from "./images/insta1.jpg";
-import insta2 from "./images/insta1.jpg";
-import insta3 from "./images/insta1.jpg";
-import insta4 from "./images/insta1.jpg";
 
 const illustrationImageRight: string =
   "https://www.etatcivil.info/wp-content/uploads/sites/7/2019/11/233-725-mariages-heterosexuels-homosexuels-celebres-2016_0_729_486.jpg";
@@ -89,6 +85,8 @@ const questionsAnswers: {
 
 const instagramTitle: string = "Suivez-nous sur Instagram @Noces_de_Coton";
 
+const INSTAGRAM_LINK = "https://www.instagram.com/noces_de_coton/";
+
 const instagramImages = [
   "images/insta1.jpg",
   "images/insta2.jpg",
@@ -106,6 +104,7 @@ const IndexContent = {
   advantages,
   questionsAnswers,
   instagramTitle,
+  INSTAGRAM_LINK,
   instagramImages,
 };
 

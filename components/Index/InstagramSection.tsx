@@ -2,11 +2,9 @@ import React from "react";
 import { AiOutlineInstagram } from "react-icons/ai";
 import IndexContent from "../../Content/IndexContent";
 
-const INSTAGRAM_LINK = "https://www.instagram.com/noces_de_coton/";
-
 const InstagramSection = () => {
   const clickHandler = () => {
-    window.open(INSTAGRAM_LINK, "_blank");
+    window.open(IndexContent.INSTAGRAM_LINK, "_blank");
   };
 
   return (
