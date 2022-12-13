@@ -45,7 +45,9 @@ const ProductDetailSection = ({ product }: Props) => {
             step={stepQuantity}
             defaultValue={minimumQuantity}
           />
-          <MediumButton onClick={addProductHandler}>ADD TO CART</MediumButton>
+          <MediumButton onClick={addProductHandler}>
+            AJOUTER AU PANIER
+          </MediumButton>
           <p>{product?.description}</p>
           <div className="my-8 lg:my-16">
             {Array(3)

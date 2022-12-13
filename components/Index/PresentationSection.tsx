@@ -31,7 +31,7 @@ const PresentationSection = () => {
         href="/shop"
         className="absolute left-0 right-0 bottom-[10%]"
       >
-        SHOP COLLECTIONS
+        BOUTIQUE
       </LargeButton>
     </section>
   );

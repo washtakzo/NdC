@@ -1,15 +1,20 @@
 import React from "react";
 import Paralax from "./Paralax";
+import { useRouter } from "next/router";
+import { Categories } from "../helper/types";
 
 type Props = {
   scrollStartingPoint: number;
   paralaxSpeed: number;
   isStyleInverted: boolean;
   image: string;
-  title: string;
+  title: Categories;
   text: string;
   subtitle: string;
 };
+
+//TODO: handle query param categorie in shop page
+
 const Categorie = ({
   scrollStartingPoint,
   paralaxSpeed,
@@ -30,6 +35,12 @@ const Categorie = ({
     ? "categorie__description_container_left"
     : "categorie__description_container_right";
 
+  const router = useRouter();
+
+  const clickHandler = () => {
+    router.push({ pathname: "shop", query: { categorie: title } });
+  };
+
   return (
     <div className="categorie">
       <h2 className={`categorie__title ${sideTitleClass} font-serif text-6xl`}>
@@ -37,16 +48,23 @@ const Categorie = ({
       </h2>
       <div className={`categorie__description_container ${sideTextClass}`}>
         <h3 className="font-serif  text-2xl sm:text-3xl">{text}</h3>
-        <p className="text-third text-xs sm:text-sm md:text-lg my-4">
+        <p
+          className="text-third text-xs sm:text-sm md:text-lg my-4 cursor-pointer"
+          onClick={clickHandler}
+        >
           {subtitle}
         </p>
       </div>
       <Paralax
-        className={`categorie__image ${sideImageClass}`}
+        className={`categorie__image ${sideImageClass} cursor-pointer`}
         scrollStartingPoint={scrollStartingPoint}
         paralaxSpeed={paralaxSpeed}
       >
-        <img src={image} alt="categorie shop illustration" />
+        <img
+          src={image}
+          alt="categorie shop illustration"
+          onClick={clickHandler}
+        />
       </Paralax>
     </div>
   );

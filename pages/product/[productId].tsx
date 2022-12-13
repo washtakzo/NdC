@@ -30,7 +30,7 @@ const ProductPage = () => {
   const NoProductFoundErrorJSX = (
     <div className="flex justify-center items-center h-[60vh]">
       <h2 className="font-serif text-4xl text-center">
-        Could not find the product <br /> Server Problem please try again
+        Produit introuvable <br /> Une erreur à pu se produire
       </h2>
     </div>
   );

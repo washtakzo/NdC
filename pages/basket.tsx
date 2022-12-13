@@ -74,7 +74,7 @@ const Basket = () => {
 
   const noItemJSX = (
     <div className="flex justify-center my-16">
-      <h2>No items found</h2>
+      <h2>Panier vide</h2>
     </div>
   );
 
@@ -85,7 +85,7 @@ const Basket = () => {
       <div className="h-screen flex flex-col justify-between fixed top-0 right-0 bg-white z-50 md:w-[60%] lg:w-[50%] xl:w-[800px] overflow-y-auto">
         <div>
           <div className="flex justify-between items-center p-4 border-b border-secondary">
-            <h2 className="font-serif text-3xl md:text-4xl">Your Cart</h2>
+            <h2 className="font-serif text-3xl md:text-4xl">Votre Panier</h2>
             <AiOutlineClose
               className="w-6 h-6 cursor-pointer"
               onClick={crossClickHandler}
@@ -136,7 +136,7 @@ const Basket = () => {
                         className="text-third text-sm md:text-[1rem] text-center cursor-pointer"
                         onClick={() => removeCompletProduct(item.product)}
                       >
-                        Remove
+                        Supprimer
                       </p>
                     </div>
                   </div>
@@ -148,12 +148,10 @@ const Basket = () => {
         </div>
         <div className="px-8 py-4 border-t border-third25 mt-2">
           <div className="flex justify-between">
-            <p>Subtotal</p>
+            <p>Total</p>
             <h4 className="font-bold">{totalPrice.toFixed(2) + " €"}</h4>
           </div>
-          <MediumButton onClick={checkoutHandler}>
-            CONTINUE TO CHECKOUT
-          </MediumButton>
+          <MediumButton onClick={checkoutHandler}>PASSER COMMANDE</MediumButton>
         </div>
       </div>
     </Portal>

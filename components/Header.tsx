@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import { useSelector, useDispatch } from "react-redux";
 import Basket from "../pages/basket";
 import { basketActions } from "../store/basket-slice";
+import IndexContent from "../Content/IndexContent";
 
 const Header = () => {
   const [scrollY, setScrollY] = useState(0);
@@ -57,11 +58,18 @@ const Header = () => {
               <Link href="/">Noces de coton</Link>
             </h2>
             <ul className="flex space-x-8">
-              <li className="header__liste_item ">Our Story</li>
+              <a
+                href={IndexContent.INSTAGRAM_LINK}
+                target="_blank"
+                rel="noreferrer"
+                className="header__liste_item "
+              >
+                Suivez-nous
+              </a>
               <Link href="/shop" className="header__liste_item">
-                Shop
+                Boutique
               </Link>
-              <li className="header__liste_item">Contact Us</li>
+              <li className="header__liste_item">Contacts</li>
             </ul>
           </div>
           <div className="absolute top-6 right-6 lg:right-28">

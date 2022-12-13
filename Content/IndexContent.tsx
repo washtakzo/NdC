@@ -28,7 +28,7 @@ const categoriesIntroduction: {
   {
     image:
       "https://www.tasteofhome.com/wp-content/uploads/2022/06/safari-baby-shower-theme-ecomm-via-amazon.jpg?fit=700,700",
-    title: Categories.BOITE,
+    title: Categories.COFFRETS,
     text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi doloribus nesciunt nam molestias facilis exercitationem recusandae labore !",
     subtitle: "Consultez nos coffrets",
   },
@@ -72,7 +72,7 @@ const questionsAnswers: {
       "Vous pouvez choisir vos produits sur notre site et nous vous contacterons par téléphone après votre commande pour définir ensemble de la personalisation que vous souhaitez. Vous pouvez également nous contactez sur notre instagram pour nous poser toutes questions nécessaire avant de passer commande, nous répondant rapidement à vos intérogations.",
   },
   {
-    question: "Quels sont délais de livraison ?",
+    question: "Quels sont nos délais de livraison ?",
     answer:
       "Après la commande passé et la personalisation du produits validé, comptez 3 semaines pour le recevoir chez vous",
   },
