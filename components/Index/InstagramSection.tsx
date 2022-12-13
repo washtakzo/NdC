@@ -22,6 +22,7 @@ const InstagramSection = () => {
       <div className="grid grid-cols-2 mx-auto md:grid-cols-4">
         {IndexContent.instagramImages.map((image) => (
           <img
+            key={image}
             className="aspect-square object-cover"
             src={image}
             alt="instagram image"
