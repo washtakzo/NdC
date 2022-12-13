@@ -1,4 +1,8 @@
 import { Categories } from "../helper/types";
+import insta1 from "./images/insta1.jpg";
+import insta2 from "./images/insta1.jpg";
+import insta3 from "./images/insta1.jpg";
+import insta4 from "./images/insta1.jpg";
 
 const illustrationImageRight: string =
   "https://www.etatcivil.info/wp-content/uploads/sites/7/2019/11/233-725-mariages-heterosexuels-homosexuels-celebres-2016_0_729_486.jpg";
@@ -41,6 +45,9 @@ const categoriesIntroduction: {
   },
 ];
 
+const advantagesImage: string =
+  "https://i.etsystatic.com/6075796/r/il/d216b1/4174042036/il_fullxfull.4174042036_rtc1.jpg";
+
 const advantages: {
   title: string;
   text: string;
@@ -80,20 +87,26 @@ const questionsAnswers: {
   },
 ];
 
-const instagramTitle: string = "Follow us on Instagram @Noce_de_Coton";
+const instagramTitle: string = "Suivez-nous sur Instagram @Noces_de_Coton";
 
-const instagramImages: string[] = ["", "", "", ""];
+const instagramImages = [
+  "images/insta1.jpg",
+  "images/insta2.jpg",
+  "images/insta3.jpg",
+  "images/insta4.jpg",
+];
 
-const homeContent = {
+const IndexContent = {
   illustrationImageRight,
   illustrationImageLeft,
   titre,
   introduction,
   categoriesIntroduction,
+  advantagesImage,
   advantages,
   questionsAnswers,
   instagramTitle,
   instagramImages,
 };
 
-export default homeContent;
+export default IndexContent;

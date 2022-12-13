@@ -1,7 +1,7 @@
 import React from "react";
 import LargeButton from "../LargeButton";
 import Paralax from "../Paralax";
-import IndexContent from "../../Content/index";
+import IndexContent from "../../Content/IndexContent";
 
 const PresentationSection = () => {
   return (

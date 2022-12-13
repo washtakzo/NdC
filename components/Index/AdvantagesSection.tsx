@@ -1,6 +1,6 @@
 import React from "react";
 import Advantage from "../Advantage";
-import IndexContent from "../../Content/index";
+import IndexContent from "../../Content/IndexContent";
 
 const AdvantagesSection = () => {
   return (
@@ -8,7 +8,7 @@ const AdvantagesSection = () => {
       <div className="md:flex justify-center items-center md:w-[50%] md:border-r-[1px] md:border-black md:p-16 md:relative ">
         <img
           className="z-[1] md:max-h-[60%]"
-          src="https://assets.website-files.com/60153bc9d8840978bfd8963b/60171b4ffd23362dd81bcc71_jasmin-chew-bv-X6AoPxXU-unsplash.jpg"
+          src={IndexContent.advantagesImage}
           alt="illustration"
         />
         <div className="hidden md:block w-[80%] max-w-[400px] aspect-square absolute -left-[20%] top-[40%] rounded-full border border-black lg:top-[10%] lg:max-w-[70vh]" />

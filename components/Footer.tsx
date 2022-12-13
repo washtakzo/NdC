@@ -5,7 +5,7 @@ const Footer = () => {
     <footer className="bg-primary">
       <footer className="flex flex-col  md:flex-row sm:py-8 lg:py-16 lg:justify-evenly max-w-[1600px] mx-auto">
         <h3 className="text-center font-serif text-3xl p-4 font-bold">
-          Noce de coton
+          Noces de coton
         </h3>
         <div className="grid sm:grid-cols-2  lg:grid-cols-4 sm:w-[80%] sm:py-4 sm:gap-16 max-w-[900px] mx-auto">
           {new Array(4).fill(0).map((_, index) => (

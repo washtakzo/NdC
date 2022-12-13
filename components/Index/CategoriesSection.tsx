@@ -1,6 +1,6 @@
 import React from "react";
 import Categorie from "../Categorie";
-import IndexContent from "../../Content/index";
+import IndexContent from "../../Content/IndexContent";
 
 const CategoriesSection = () => {
   return (

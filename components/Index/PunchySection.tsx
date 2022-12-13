@@ -1,5 +1,5 @@
 import React from "react";
-import IndexContent from "../../Content/index";
+import IndexContent from "../../Content/IndexContent";
 
 const PunchySection = () => {
   return (

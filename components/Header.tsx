@@ -54,7 +54,7 @@ const Header = () => {
             style={{ transform: `translateY(${headerTranslation})` }}
           >
             <h2 className="inline-flex font-semibold text-3xl mb-8 cursor-pointer font-serif">
-              <Link href="/">Noce de coton</Link>
+              <Link href="/">Noces de coton</Link>
             </h2>
             <ul className="flex space-x-8">
               <li className="header__liste_item ">Our Story</li>

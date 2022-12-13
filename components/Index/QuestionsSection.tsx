@@ -1,6 +1,6 @@
 import React from "react";
 import QuestionAnswer from "../QuestionAnswer";
-import IndexContent from "../../Content/index";
+import IndexContent from "../../Content/IndexContent";
 
 const QuestionsSection = () => {
   return (
