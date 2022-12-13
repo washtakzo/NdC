@@ -68,9 +68,9 @@ const ShopSection = ({ defaultCategorie, onCategorieChange }: Props) => {
           </li>
           <li
             className="font-serif text-2xl my-4 cursor-pointer hover:text-third"
-            onClick={() => clickCategorieHandler(Categories.BOITE)}
+            onClick={() => clickCategorieHandler(Categories.COFFRETS)}
           >
-            Boites
+            Coffrets
           </li>
         </ul>
       </div>

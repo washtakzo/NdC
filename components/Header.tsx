@@ -57,11 +57,11 @@ const Header = () => {
               <Link href="/">Noces de coton</Link>
             </h2>
             <ul className="flex space-x-8">
-              <li className="header__liste_item ">Our Story</li>
+              <li className="header__liste_item ">Notre Histoire</li>
               <Link href="/shop" className="header__liste_item">
-                Shop
+                Boutique
               </Link>
-              <li className="header__liste_item">Contact Us</li>
+              <li className="header__liste_item">Contactez-nous</li>
             </ul>
           </div>
           <div className="absolute top-6 right-6 lg:right-28">

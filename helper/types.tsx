@@ -36,5 +36,5 @@ export enum Categories {
   ALL = "tous les produits",
   FAIRE_PART = "faire-part",
   PLATEAUX = "plateaux",
-  BOITE = "boites",
+  COFFRETS = "coffrets",
 }

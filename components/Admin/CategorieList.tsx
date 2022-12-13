@@ -32,7 +32,7 @@ export default function CategorieList(props: any) {
             onClick={() => handleClick(Categories.FAIRE_PART)}
           >
             <ListItemButton sx={{ pl: 4 }}>
-              <ListItemText primary="Faire-part" />
+              <ListItemText primary={Categories.FAIRE_PART} />
             </ListItemButton>
           </List>
           <List
@@ -41,16 +41,16 @@ export default function CategorieList(props: any) {
             onClick={() => handleClick(Categories.PLATEAUX)}
           >
             <ListItemButton sx={{ pl: 4 }}>
-              <ListItemText primary="Plataux" />
+              <ListItemText primary={Categories.PLATEAUX} />
             </ListItemButton>
           </List>
           <List
             component="div"
             disablePadding
-            onClick={() => handleClick(Categories.BOITE)}
+            onClick={() => handleClick(Categories.COFFRETS)}
           >
             <ListItemButton sx={{ pl: 4 }}>
-              <ListItemText primary="Boite" />
+              <ListItemText primary={Categories.COFFRETS} />
             </ListItemButton>
           </List>
         </Collapse>

@@ -28,7 +28,7 @@ const categoriesIntroduction: {
   {
     image:
       "https://www.tasteofhome.com/wp-content/uploads/2022/06/safari-baby-shower-theme-ecomm-via-amazon.jpg?fit=700,700",
-    title: Categories.BOITE,
+    title: Categories.COFFRETS,
     text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi doloribus nesciunt nam molestias facilis exercitationem recusandae labore !",
     subtitle: "Consultez nos coffrets",
   },

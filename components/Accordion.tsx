@@ -5,12 +5,12 @@ import { AiOutlineMinus } from "react-icons/ai";
 import { textToHeigth } from "../helper/functions";
 
 const Accordion = () => {
-  const description = `
-    This title and the text are the same for all the pages & products. You
-    can edit the title and the text on any product page. This title and
-    the text are the same for all the pages & products. You can edit the
-    title and the text on any product page. This title and the text are
-    the same for all the pages & products. Y`;
+  const description = `Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+  Qui ratione, a distinctio magni vitae ullam laboriosam aspernatur veniam cum eius 
+  vel beatae libero consequatur commodi earum. Quos porro amet quibusdam nostrum iure 
+  nihil accusantium nobis quia, impedit laboriosam. Optio, corporis excepturi. Earum aut 
+  molestias veritatis blanditiis vel architecto corrupti fugit.`;
+
   const maxHeigth = `${textToHeigth(description)}px`;
 
   const [isShowText, setIsShowText] = useState(false);
@@ -23,7 +23,7 @@ const Accordion = () => {
         onClick={clickHandler}
         className="flex justify-between items-center text-third cursor-pointer w-full h-full text-left text-sm tracking-wider"
       >
-        SHIPPING
+        LIVRAISON
         {isShowText ? <AiOutlineMinus /> : <AiOutlinePlus />}
       </button>
       <div

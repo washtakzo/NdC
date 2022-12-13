@@ -9,7 +9,7 @@ export const textToHeigth = (text: string) => {
 export const capitalize = (text: string) => {
   if (text.length < 1) return;
 
-  const textArray = text.split("");
+  const textArray = text?.split("");
 
   textArray[0] = textArray[0].toUpperCase();
 
