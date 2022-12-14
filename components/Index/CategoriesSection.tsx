@@ -4,7 +4,7 @@ import IndexContent from "../../Content/IndexContent";
 
 const CategoriesSection = () => {
   return (
-    <section>
+    <section className="py-4">
       {IndexContent.categoriesIntroduction.map((item, index) => {
         const isEven = index % 2 === 0;
         const paralaxStartingPoint = 1000 + index * 1200;
