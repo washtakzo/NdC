@@ -54,7 +54,7 @@ const Header = () => {
             id="header_translate"
             style={{ transform: `translateY(${headerTranslation})` }}
           >
-            <h2 className="inline-flex font-semibold text-3xl mb-8 cursor-pointer font-serif">
+            <h2 className="inline-flex font-semibold text-3xl mb-8 cursor-pointer font-serif mt-4">
               <Link href="/">Noces de coton</Link>
             </h2>
             <ul className="flex space-x-8">
@@ -69,7 +69,9 @@ const Header = () => {
               <Link href="/shop" className="header__liste_item">
                 Boutique
               </Link>
-              <li className="header__liste_item">Contacts</li>
+              <Link href="/contacts" className="header__liste_item">
+                Contacts
+              </Link>
             </ul>
           </div>
           <div className="absolute top-6 right-6 lg:right-28">
@@ -94,7 +96,7 @@ const Header = () => {
                 </div>
               </li>
               <li>
-                <div className="relative">
+                <div className="relative mt-2">
                   {/* Basket Icon */}
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
