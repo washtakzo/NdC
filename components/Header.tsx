@@ -69,7 +69,9 @@ const Header = () => {
               <Link href="/shop" className="header__liste_item">
                 Boutique
               </Link>
-              <li className="header__liste_item">Contacts</li>
+              <Link href="/contacts" className="header__liste_item">
+                Contacts
+              </Link>
             </ul>
           </div>
           <div className="absolute top-6 right-6 lg:right-28">
