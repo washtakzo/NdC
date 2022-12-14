@@ -23,11 +23,7 @@ const PopularProduct = ({ id, image, title, price }: Props) => {
       onClick={clickHandler}
     >
       <div className="my-8 mx-auto">
-        <img
-          className="w-[64vw] lg:w-[32px]s lg:min-w-0"
-          src={image}
-          alt="product"
-        />
+        <img src={image} alt="product" />
         <h3 className="text-black mt-4 text-left">{title}</h3>
         <p className="mt-2 text-sm text-left">{`${price} EUR`}</p>
       </div>
