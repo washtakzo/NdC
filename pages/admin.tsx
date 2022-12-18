@@ -8,7 +8,7 @@ import ProductItem from "../components/Shop/ProductItem";
 import MediumButton from "../components/MediumButton";
 import ImageUpload from "../components/ImageUpload";
 import { Product, Categories } from "../helper/types";
-import { PRODUCTS_URL } from "../helper/url";
+import { PRODUCTS_URL, PRODUCTS_IMAGE_URL } from "../helper/url";
 import LoadingSpinner from "../components/UI/LoadingSpinner";
 import ErrorBox from "../components/ErrorBox";
 
@@ -29,7 +29,7 @@ const Admin = () => {
     setCategorie(categorie);
   };
 
-  const postProductHandler = async (data: any) => {
+  const postProductHandlerWithImageData = async (data: any) => {
     const { title, description, price, adminPassword } = data;
 
     const formData = new FormData();
@@ -49,6 +49,30 @@ const Admin = () => {
     }
 
     window.location.reload();
+  };
+
+  const postProductHandlerWithImageURL = async (data: any) => {
+    const { title, description, price, adminPassword, image } = data;
+
+    try {
+      //TODO: change url depending on the image data
+      await sendRequest(
+        PRODUCTS_IMAGE_URL || "",
+        "POST",
+        JSON.stringify({
+          title,
+          description,
+          categorie,
+          price,
+          adminPassword,
+          image,
+        }),
+        { "Content-Type": "application/json" }
+      );
+    } catch (error: any) {
+      console.warn(error.message);
+    }
+    // window.location.reload();
   };
 
   const deleteProductHandler = async (productId: string) => {
@@ -91,7 +115,10 @@ const Admin = () => {
         <h1 className="text-center font-serif text-3xl md:text-5xl">
           Post new product
         </h1>
-        <form onSubmit={handleSubmit(postProductHandler)} className="mt-16">
+        <form
+          onSubmit={handleSubmit(postProductHandlerWithImageURL)}
+          className="mt-16"
+        >
           <input
             className={inputClass}
             type="text"
@@ -123,7 +150,13 @@ const Admin = () => {
             placeholder="Admin password"
             {...register("adminPassword", { required: true })}
           />
-          <ImageUpload onLoadImage={setImages} />
+          <input
+            className={inputClass}
+            type="text"
+            placeholder="image URL"
+            {...register("image", { required: true })}
+          />
+          {/* <ImageUpload onLoadImage={setImages} /> */}
           <MediumButton type="submit">SUBMIT</MediumButton>
         </form>
       </section>

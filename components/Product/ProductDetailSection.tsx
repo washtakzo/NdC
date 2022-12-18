@@ -63,7 +63,7 @@ const ProductDetailSection = ({ product }: Props) => {
           <img
             key={imagePath}
             className="mb-4 last:mb-0 md:mb-16 md:last:mb-0"
-            src={BASE_URL + imagePath}
+            src={imagePath}
             alt="product image"
           />
         ))}

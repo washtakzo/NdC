@@ -101,7 +101,7 @@ const Basket = () => {
                 <div className="flex flex-col sm:flex-row justify-around items-center py-4 borders border-black">
                   <div className="w-[25%]">
                     <img
-                      src={BASE_URL + item.product.images[0]}
+                      src={item.product.images[0]}
                       alt={item.product.title}
                       className="mx-auto sm:p-4"
                     />
