@@ -33,7 +33,7 @@ const PopularProductsSection = () => {
             <PopularProduct
               key={product.id}
               id={product.id}
-              image={BASE_URL + product.images[0]}
+              image={product.images[0]}
               title={product.title}
               price={product.price}
             />
