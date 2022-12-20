@@ -8,7 +8,7 @@ const PopularProductsSection = () => {
   const [popularProducts, setPopularProducts] = useState([]);
   const { isLoading, error, sendRequest } = useHttp();
 
-  //TODO:change the fetch to get popular products when API ok
+  //TODO:change the fetch to get popular products when API ok -
   useEffect(() => {
     const fetchProduct = async () => {
       try {
@@ -33,7 +33,7 @@ const PopularProductsSection = () => {
             <PopularProduct
               key={product.id}
               id={product.id}
-              image={BASE_URL + product.images[0]}
+              image={product.images[0]}
               title={product.title}
               price={product.price}
             />

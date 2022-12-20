@@ -13,7 +13,7 @@ import LoadingSpinner from "../components/UI/LoadingSpinner";
 import ErrorBox from "../components/ErrorBox";
 
 //TODO:Mobile View : change checkout button position to be more visible ? floating ?
-//TODO:Stripe: change success and cancel pages
+//TODO:Stripe: create success pages
 
 const Basket = () => {
   const basket = useSelector((store: any) => store.basketSection.basket);
@@ -101,7 +101,7 @@ const Basket = () => {
                 <div className="flex flex-col sm:flex-row justify-around items-center py-4 borders border-black">
                   <div className="w-[25%]">
                     <img
-                      src={BASE_URL + item.product.images[0]}
+                      src={item.product.images[0]}
                       alt={item.product.title}
                       className="mx-auto sm:p-4"
                     />
