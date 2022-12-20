@@ -13,7 +13,7 @@ import LoadingSpinner from "../components/UI/LoadingSpinner";
 import ErrorBox from "../components/ErrorBox";
 
 //TODO:Mobile View : change checkout button position to be more visible ? floating ?
-//TODO:Stripe: change success and cancel pages
+//TODO:Stripe: create success pages
 
 const Basket = () => {
   const basket = useSelector((store: any) => store.basketSection.basket);

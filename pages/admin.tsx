@@ -13,6 +13,11 @@ import LoadingSpinner from "../components/UI/LoadingSpinner";
 import ErrorBox from "../components/ErrorBox";
 
 //TODO:add is popularProduct check box
+//TODO:add multiple price depending on quantity
+//TODO:add multiple images for products
+//TODO:add google drive transformation link before send to database
+//TODO:add edit product
+//TODO:add password input to delete a product
 
 const inputClass = "block mx-auto border border-secondary rounded-lg my-4 p-2";
 
