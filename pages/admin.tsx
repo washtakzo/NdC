@@ -31,9 +31,21 @@ const Admin = () => {
   const [categorie, setCategorie] = React.useState(defaultCategorie);
   const { isLoading, error, sendRequest } = useHttp();
   const { register, handleSubmit, control } = useForm();
-  const { fields, append, remove } = useFieldArray({
+  const {
+    fields: fieldsImage,
+    append: appendImage,
+    remove: removeImage,
+  } = useFieldArray({
     control,
     name: "images",
+  });
+  const {
+    fields: fieldsPrice,
+    append: appendPrice,
+    remove: removePrice,
+  } = useFieldArray({
+    control,
+    name: "price",
   });
   const [images, setImages] = useState<any[] | undefined>();
 
@@ -64,8 +76,8 @@ const Admin = () => {
   };
 
   const postProductHandlerWithImageURL = async (data: any) => {
-    const { title, description, price, adminPassword, images } = data;
-    console.log(data.images);
+    const { title, description, prices, adminPassword, images } = data;
+    console.log(data);
 
     let formatedImages = [];
     try {
@@ -86,7 +98,7 @@ const Admin = () => {
           title,
           description,
           categorie,
-          price,
+          prices,
           adminPassword,
           images: formatedImages,
         }),
@@ -120,11 +132,11 @@ const Admin = () => {
   };
 
   //FIXME:Find a more elegent way to do it
-  //Add a first url input
+  //Add a first url and price input
   React.useEffect(() => {
     if (!hasRendered) {
-      append({ url: "" });
-      console.log("teest");
+      appendImage({ url: "" });
+      appendPrice({ quantity: 0, price: 0 });
       hasRendered = true;
     }
   }, []);
@@ -179,27 +191,62 @@ const Admin = () => {
             onCategorieChange={categorieChangeHandler}
           />
 
-          <input
-            className={inputClass}
-            type="number"
-            step={0.01}
-            placeholder="price"
-            {...register("price", { required: true })}
-          />
+          {fieldsPrice.map((field, index) => (
+            <form
+              key={field.id}
+              className="flex justify-center items-center space-x-2"
+            >
+              {index === fieldsPrice.length - 1 && index !== 0 && (
+                <button
+                  className="border-secondary border-2 h-8 w-8"
+                  onClick={() => removePrice(index)}
+                >
+                  -
+                </button>
+              )}
+
+              <input
+                className={`${inputClass} mx-0`}
+                type="number"
+                placeholder="quantity"
+                {...register(`prices.${index}.quantity` as const, {
+                  required: true,
+                })}
+              />
+              <input
+                className={`${inputClass} mx-0`}
+                type="number"
+                step={0.01}
+                placeholder="price"
+                {...register(`prices.${index}.price` as const, {
+                  required: true,
+                })}
+              />
+              {index === fieldsPrice.length - 1 && (
+                <button
+                  className="border-secondary border-2 h-8 w-8"
+                  onClick={() => appendPrice({ quantity: 0, price: 0 })}
+                >
+                  +
+                </button>
+              )}
+            </form>
+          ))}
+
           <input
             className={inputClass}
             type="text"
             placeholder="Admin password"
             {...register("adminPassword", { required: true })}
           />
-          {fields.map((field, index) => (
+          {fieldsImage.map((field, index) => (
             <div
               key={field.id}
               className="flex justify-center items-center space-x-4"
             >
-              {index === fields.length - 1 && index !== 0 && (
+              {index === fieldsImage.length - 1 && index !== 0 && (
                 <button
-                  onClick={() => remove(index)}
+                  onClick={() => removeImage(index)}
                   className="border-secondary border-2 h-8 w-8"
                 >
                   -
@@ -213,9 +260,9 @@ const Admin = () => {
                   required: true,
                 })}
               />
-              {index === fields.length - 1 && (
+              {index === fieldsImage.length - 1 && (
                 <button
-                  onClick={() => append({ url: "" })}
+                  onClick={() => appendImage({ url: "" })}
                   className="border-secondary border-2 h-8 w-8"
                 >
                   +
