@@ -26,3 +26,18 @@ export const capitalizeAllWords = (text: string) => {
 
   return textAllWordsCapitalized;
 };
+
+export const formatGoogleDriveLink = (link: string) => {
+  const linkArray = link.split("/");
+
+  if (linkArray.length < 6)
+    throw new Error(
+      "le lien fourni n'est pas valid, il doit être de type : https://drive.google.com/file/d/1oNUy5lGPi_R/view?usp=sharing"
+    );
+
+  const id = linkArray[5];
+
+  const BASE_LINK = "https://drive.google.com/uc?id=";
+
+  return BASE_LINK + id;
+};

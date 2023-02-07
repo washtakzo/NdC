@@ -11,6 +11,7 @@ import { Product, Categories } from "../helper/types";
 import { PRODUCTS_URL, PRODUCTS_IMAGE_URL } from "../helper/url";
 import LoadingSpinner from "../components/UI/LoadingSpinner";
 import ErrorBox from "../components/ErrorBox";
+import { formatGoogleDriveLink } from "../helper/functions";
 
 //TODO:add is popularProduct check box
 //TODO:add multiple price depending on quantity
@@ -59,6 +60,14 @@ const Admin = () => {
   const postProductHandlerWithImageURL = async (data: any) => {
     const { title, description, price, adminPassword, image } = data;
 
+    let formatedImage = "";
+    try {
+      formatedImage = formatGoogleDriveLink(image);
+    } catch (error: any) {
+      alert(error.message);
+      return;
+    }
+
     try {
       //TODO: change url depending on the image data
       await sendRequest(
@@ -70,7 +79,7 @@ const Admin = () => {
           categorie,
           price,
           adminPassword,
-          image,
+          image: formatedImage,
         }),
         { "Content-Type": "application/json" }
       );
@@ -80,12 +89,21 @@ const Admin = () => {
     // window.location.reload();
   };
 
-  const deleteProductHandler = async (productId: string) => {
+  const deleteProductHandler = async (
+    event: React.FormEvent<HTMLFormElement>,
+    productId: string
+  ) => {
+    event.preventDefault();
+
+    const formEl = event.target as HTMLFormElement;
+    const passwordInputEl = formEl.querySelector("input");
+    const password = (passwordInputEl as HTMLInputElement).value;
+
     try {
       await sendRequest(
         PRODUCTS_URL + productId,
         "DELETE",
-        JSON.stringify({ adminPassword: "Hamtargo1202" }),
+        JSON.stringify({ adminPassword: password }),
         { "Content-Type": "application/json" }
       );
       window.location.reload();
@@ -174,9 +192,10 @@ const Admin = () => {
             products.map((p: Product) => (
               <div key={p.id} className="w-[80%] mx-auto">
                 <ProductItem {...p} />
-                <MediumButton onClick={() => deleteProductHandler(p.id)}>
-                  DELETE
-                </MediumButton>
+                <form onSubmit={(event) => deleteProductHandler(event, p.id)}>
+                  <input className={inputClass} placeholder="Mot de passe" />
+                  <MediumButton type="submit">Supprimer</MediumButton>
+                </form>
               </div>
             ))}
         </div>
