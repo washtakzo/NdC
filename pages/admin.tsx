@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { useForm } from "react-hook-form";
+import { useForm, useFieldArray } from "react-hook-form";
 
 import CategorieList from "../components/Admin/CategorieList";
 import Main from "../components/Main";
@@ -22,13 +22,19 @@ import { formatGoogleDriveLink } from "../helper/functions";
 
 const inputClass = "block mx-auto border border-secondary rounded-lg my-4 p-2";
 
+let hasRendered = false;
+
 const Admin = () => {
   const defaultCategorie = Categories.FAIRE_PART;
 
   const [products, setProducts] = React.useState([]);
   const [categorie, setCategorie] = React.useState(defaultCategorie);
   const { isLoading, error, sendRequest } = useHttp();
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, control } = useForm();
+  const { fields, append, remove } = useFieldArray({
+    control,
+    name: "images",
+  });
   const [images, setImages] = useState<any[] | undefined>();
 
   const categorieChangeHandler = (categorie: Categories) => {
@@ -58,11 +64,14 @@ const Admin = () => {
   };
 
   const postProductHandlerWithImageURL = async (data: any) => {
-    const { title, description, price, adminPassword, image } = data;
+    const { title, description, price, adminPassword, images } = data;
+    console.log(data.images);
 
-    let formatedImage = "";
+    let formatedImages = [];
     try {
-      formatedImage = formatGoogleDriveLink(image);
+      formatedImages = images.map((image: { url: string }) =>
+        formatGoogleDriveLink(image.url)
+      );
     } catch (error: any) {
       alert(error.message);
       return;
@@ -79,7 +88,7 @@ const Admin = () => {
           categorie,
           price,
           adminPassword,
-          image: formatedImage,
+          images: formatedImages,
         }),
         { "Content-Type": "application/json" }
       );
@@ -109,6 +118,16 @@ const Admin = () => {
       window.location.reload();
     } catch (error) {}
   };
+
+  //FIXME:Find a more elegent way to do it
+  //Add a first url input
+  React.useEffect(() => {
+    if (!hasRendered) {
+      append({ url: "" });
+      console.log("teest");
+      hasRendered = true;
+    }
+  }, []);
 
   React.useEffect(() => {
     const fetchData = async () => {
@@ -173,12 +192,38 @@ const Admin = () => {
             placeholder="Admin password"
             {...register("adminPassword", { required: true })}
           />
-          <input
-            className={inputClass}
-            type="text"
-            placeholder="image URL"
-            {...register("image", { required: true })}
-          />
+          {fields.map((field, index) => (
+            <div
+              key={field.id}
+              className="flex justify-center items-center space-x-4"
+            >
+              {index === fields.length - 1 && index !== 0 && (
+                <button
+                  onClick={() => remove(index)}
+                  className="border-secondary border-2 h-8 w-8"
+                >
+                  -
+                </button>
+              )}
+              <input
+                className={`${inputClass} mx-0`}
+                type="text"
+                placeholder="image URL"
+                {...register(`images.${index}.url` as const, {
+                  required: true,
+                })}
+              />
+              {index === fields.length - 1 && (
+                <button
+                  onClick={() => append({ url: "" })}
+                  className="border-secondary border-2 h-8 w-8"
+                >
+                  +
+                </button>
+              )}
+            </div>
+          ))}
+
           {/* <ImageUpload onLoadImage={setImages} /> */}
           <MediumButton type="submit">SUBMIT</MediumButton>
         </form>
