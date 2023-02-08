@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { getMatchingPrice } from "../helper/functions";
 import { BasketItem, Basket, Product } from "../helper/types";
 
 type BasketSlice = {
@@ -24,7 +25,10 @@ const updateOtherState = (state: BasketSlice) => {
 
   //recalculate totalPrice
   state.totalPrice = state.basket.reduce((total: number, item: BasketItem) => {
-    return (total += item.product.price * item.quantity);
+    const quantity = item.quantity;
+    const prices = item.product.prices;
+    const matchingPrice = getMatchingPrice(quantity, prices);
+    return (total += matchingPrice * quantity);
   }, 0);
 };
 

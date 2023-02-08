@@ -41,3 +41,21 @@ export const formatGoogleDriveLink = (link: string) => {
 
   return BASE_LINK + id;
 };
+
+export const getMatchingPrice = (
+  quantity: number,
+  prices: { quantity: number; price: number | string }[]
+) => {
+  //la méthode sort modifie l'array d'origine et peux donc causer des erreur
+  //faire une copy au préalable permet d'éviter toute erreur
+  const copyArrayForSort = [...prices];
+  const sortedPrices = copyArrayForSort.sort(
+    (a, b) => +a.quantity - +b.quantity
+  );
+  const revertSortedPrices = sortedPrices.reverse();
+
+  const matchingPrice = revertSortedPrices.find(
+    (el) => quantity >= el.quantity
+  )?.price;
+  return matchingPrice ? +matchingPrice : 999;
+};

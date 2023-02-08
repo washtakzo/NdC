@@ -2,16 +2,10 @@ import { useRouter } from "next/router";
 import React from "react";
 import { priceFormater } from "../../helper/functions";
 import { BASE_URL } from "../../helper/url";
+import { Product } from "../../helper/types";
+import Image from "next/image";
 
-type Props = {
-  id: string;
-  title: string;
-  description: string;
-  price: number;
-  images: string[];
-};
-
-const ProductItem = ({ id, title, description, price, images }: Props) => {
+const ProductItem = ({ id, title, description, prices, images }: Product) => {
   const secondaryImage = images[1] || images[0];
   const router = useRouter();
   const clickHander = () => {
@@ -37,7 +31,7 @@ const ProductItem = ({ id, title, description, price, images }: Props) => {
       <h2 className="mt-4 text-2xl font-serif group-hover:text-third">
         {title}
       </h2>
-      <p className="text-sm">{priceFormater(price)}</p>
+      <p className="text-sm">{priceFormater(prices[0].price)}</p>
     </div>
   );
 };
