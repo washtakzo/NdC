@@ -6,7 +6,7 @@ export const DUMMY_PRODUCTS: Product[] = [
     title: "Miam Perfume",
     description: "Description of the product here ...",
     categorie: "fairpart",
-    price: 200.76,
+    prices: [{ quantity: 1, price: 200.76 }],
     images: [
       "https://assets.website-files.com/601835c0c88eb62d2fa657a1/6019880417e04655dd17e50b_leisara-imZnpDXSNVA-unsplash.jpg",
     ],
@@ -16,7 +16,8 @@ export const DUMMY_PRODUCTS: Product[] = [
     title: "FairPart Perfume",
     description: "Description of the product here ...",
     categorie: "fairpart",
-    price: 200.76,
+
+    prices: [{ quantity: 1, price: 200.76 }],
     images: [
       "https://assets.website-files.com/601835c0c88eb62d2fa657a1/60199122d5c8861512defdfc_liana-mikah-jbqX046ww8I-unsplash.jpg",
       "https://assets.website-files.com/601835c0c88eb62d2fa657a1/601990eb5a584185088fc2fe_kailey-sniffin-Ex0P6ldX384-unsplash.jpg",
@@ -27,7 +28,8 @@ export const DUMMY_PRODUCTS: Product[] = [
     title: "Boite Flower Perfume",
     description: "Description of the product here ...",
     categorie: "boite",
-    price: 189,
+
+    prices: [{ quantity: 1, price: 200.76 }],
     images: [
       "https://assets.website-files.com/601835c0c88eb62d2fa657a1/601990eb5a584185088fc2fe_kailey-sniffin-Ex0P6ldX384-unsplash.jpg",
       "https://assets.website-files.com/601835c0c88eb62d2fa657a1/60199122d5c8861512defdfc_liana-mikah-jbqX046ww8I-unsplash.jpg",
@@ -38,7 +40,8 @@ export const DUMMY_PRODUCTS: Product[] = [
     title: "FairPart Perfume Black",
     description: "Description of the product here ...",
     categorie: "fairpart",
-    price: 219,
+
+    prices: [{ quantity: 1, price: 200.76 }],
     images: [
       "https://assets.website-files.com/601835c0c88eb62d2fa657a1/6019880417e04655dd17e50b_leisara-imZnpDXSNVA-unsplash.jpg",
       "https://assets.website-files.com/601835c0c88eb62d2fa657a1/601990eb5a584185088fc2fe_kailey-sniffin-Ex0P6ldX384-unsplash.jpg",
@@ -49,7 +52,8 @@ export const DUMMY_PRODUCTS: Product[] = [
     title: "Boite Flower Perfume White",
     description: "Description of the product here ...",
     categorie: "boite",
-    price: 208,
+
+    prices: [{ quantity: 1, price: 200.76 }],
     images: [
       "https://assets.website-files.com/601835c0c88eb62d2fa657a1/601990eb5a584185088fc2fe_kailey-sniffin-Ex0P6ldX384-unsplash.jpg",
     ],
