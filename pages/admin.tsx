@@ -82,10 +82,10 @@ const Admin = () => {
         }),
         { "Content-Type": "application/json" }
       );
+      window.location.reload();
     } catch (error: any) {
       console.warn(error.message);
     }
-    // window.location.reload();
   };
 
   const deleteProductHandler = async (
