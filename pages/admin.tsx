@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { useForm } from "react-hook-form";
+import { useForm, useFieldArray } from "react-hook-form";
 
 import CategorieList from "../components/Admin/CategorieList";
 import Main from "../components/Main";
@@ -11,6 +11,7 @@ import { Product, Categories } from "../helper/types";
 import { PRODUCTS_URL, PRODUCTS_IMAGE_URL } from "../helper/url";
 import LoadingSpinner from "../components/UI/LoadingSpinner";
 import ErrorBox from "../components/ErrorBox";
+import { formatGoogleDriveLink } from "../helper/functions";
 
 //TODO:add is popularProduct check box
 //TODO:add multiple price depending on quantity
@@ -21,43 +22,50 @@ import ErrorBox from "../components/ErrorBox";
 
 const inputClass = "block mx-auto border border-secondary rounded-lg my-4 p-2";
 
+let hasRendered = false;
+
 const Admin = () => {
   const defaultCategorie = Categories.FAIRE_PART;
 
   const [products, setProducts] = React.useState([]);
   const [categorie, setCategorie] = React.useState(defaultCategorie);
   const { isLoading, error, sendRequest } = useHttp();
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, control } = useForm();
+  const {
+    fields: fieldsImage,
+    append: appendImage,
+    remove: removeImage,
+  } = useFieldArray({
+    control,
+    name: "images",
+  });
+  const {
+    fields: fieldsPrice,
+    append: appendPrice,
+    remove: removePrice,
+  } = useFieldArray({
+    control,
+    name: "price",
+  });
   const [images, setImages] = useState<any[] | undefined>();
 
   const categorieChangeHandler = (categorie: Categories) => {
     setCategorie(categorie);
   };
 
-  const postProductHandlerWithImageData = async (data: any) => {
-    const { title, description, price, adminPassword } = data;
-
-    const formData = new FormData();
-    formData.append("title", title);
-    formData.append("description", description);
-    formData.append("categorie", categorie);
-    formData.append("price", price);
-    formData.append("adminPassword", adminPassword);
-    if (images) {
-      formData.append("image", images[0]);
-    }
-
-    try {
-      await sendRequest(PRODUCTS_URL || "", "POST", formData);
-    } catch (error: any) {
-      console.warn(error.message);
-    }
-
-    window.location.reload();
-  };
-
   const postProductHandlerWithImageURL = async (data: any) => {
-    const { title, description, price, adminPassword, image } = data;
+    const { title, description, prices, adminPassword, images } = data;
+    console.log(data);
+
+    let formatedImages = [];
+    try {
+      formatedImages = images.map((image: { url: string }) =>
+        formatGoogleDriveLink(image.url)
+      );
+    } catch (error: any) {
+      alert(error.message);
+      return;
+    }
 
     try {
       //TODO: change url depending on the image data
@@ -68,29 +76,48 @@ const Admin = () => {
           title,
           description,
           categorie,
-          price,
+          prices,
           adminPassword,
-          image,
+          images: formatedImages,
         }),
         { "Content-Type": "application/json" }
       );
+      window.location.reload();
     } catch (error: any) {
       console.warn(error.message);
     }
-    // window.location.reload();
   };
 
-  const deleteProductHandler = async (productId: string) => {
+  const deleteProductHandler = async (
+    event: React.FormEvent<HTMLFormElement>,
+    productId: string
+  ) => {
+    event.preventDefault();
+
+    const formEl = event.target as HTMLFormElement;
+    const passwordInputEl = formEl.querySelector("input");
+    const password = (passwordInputEl as HTMLInputElement).value;
+
     try {
       await sendRequest(
         PRODUCTS_URL + productId,
         "DELETE",
-        JSON.stringify({ adminPassword: "Hamtargo1202" }),
+        JSON.stringify({ adminPassword: password }),
         { "Content-Type": "application/json" }
       );
       window.location.reload();
     } catch (error) {}
   };
+
+  //FIXME:Find a more elegent way to do it
+  //Add a first url and price input
+  React.useEffect(() => {
+    if (!hasRendered) {
+      appendImage({ url: "" });
+      appendPrice({ quantity: 0, price: 0 });
+      hasRendered = true;
+    }
+  }, []);
 
   React.useEffect(() => {
     const fetchData = async () => {
@@ -142,26 +169,85 @@ const Admin = () => {
             onCategorieChange={categorieChangeHandler}
           />
 
-          <input
-            className={inputClass}
-            type="number"
-            step={0.01}
-            placeholder="price"
-            {...register("price", { required: true })}
-          />
+          {fieldsPrice.map((field, index) => (
+            <form
+              key={field.id}
+              className="flex justify-center items-center space-x-2"
+            >
+              {index === fieldsPrice.length - 1 && index !== 0 && (
+                <button
+                  className="border-secondary border-2 h-8 w-8"
+                  onClick={() => removePrice(index)}
+                >
+                  -
+                </button>
+              )}
+
+              <input
+                className={`${inputClass} mx-0`}
+                type="number"
+                placeholder="quantity"
+                {...register(`prices.${index}.quantity` as const, {
+                  required: true,
+                })}
+              />
+              <input
+                className={`${inputClass} mx-0`}
+                type="number"
+                step={0.01}
+                placeholder="price"
+                {...register(`prices.${index}.price` as const, {
+                  required: true,
+                })}
+              />
+              {index === fieldsPrice.length - 1 && (
+                <button
+                  className="border-secondary border-2 h-8 w-8"
+                  onClick={() => appendPrice({ quantity: 0, price: 0 })}
+                >
+                  +
+                </button>
+              )}
+            </form>
+          ))}
+
           <input
             className={inputClass}
             type="text"
             placeholder="Admin password"
             {...register("adminPassword", { required: true })}
           />
-          <input
-            className={inputClass}
-            type="text"
-            placeholder="image URL"
-            {...register("image", { required: true })}
-          />
-          {/* <ImageUpload onLoadImage={setImages} /> */}
+          {fieldsImage.map((field, index) => (
+            <div
+              key={field.id}
+              className="flex justify-center items-center space-x-4"
+            >
+              {index === fieldsImage.length - 1 && index !== 0 && (
+                <button
+                  onClick={() => removeImage(index)}
+                  className="border-secondary border-2 h-8 w-8"
+                >
+                  -
+                </button>
+              )}
+              <input
+                className={`${inputClass} mx-0`}
+                type="text"
+                placeholder="image URL"
+                {...register(`images.${index}.url` as const, {
+                  required: true,
+                })}
+              />
+              {index === fieldsImage.length - 1 && (
+                <button
+                  onClick={() => appendImage({ url: "" })}
+                  className="border-secondary border-2 h-8 w-8"
+                >
+                  +
+                </button>
+              )}
+            </div>
+          ))}
           <MediumButton type="submit">SUBMIT</MediumButton>
         </form>
       </section>
@@ -174,9 +260,10 @@ const Admin = () => {
             products.map((p: Product) => (
               <div key={p.id} className="w-[80%] mx-auto">
                 <ProductItem {...p} />
-                <MediumButton onClick={() => deleteProductHandler(p.id)}>
-                  DELETE
-                </MediumButton>
+                <form onSubmit={(event) => deleteProductHandler(event, p.id)}>
+                  <input className={inputClass} placeholder="Mot de passe" />
+                  <MediumButton type="submit">Supprimer</MediumButton>
+                </form>
               </div>
             ))}
         </div>

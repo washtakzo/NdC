@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { basketActions } from "../store/basket-slice";
 import { AiOutlineClose } from "react-icons/ai";
-import { priceFormater } from "../helper/functions";
+import { getMatchingPrice, priceFormater } from "../helper/functions";
 import { BasketItem, Product } from "../helper/types";
 import MediumButton from "../components/MediumButton";
 import ModalBackground from "../components/ModalBackground";
@@ -114,7 +114,9 @@ const Basket = () => {
                       {item.product.title}
                     </h3>
                     <p className="my-2 text-sm sm:text-sm md:text-[1rem] text-center">
-                      {priceFormater(item.product.price)}
+                      {priceFormater(
+                        getMatchingPrice(item.quantity, item.product.prices)
+                      )}
                     </p>
                     <div className="text-center flex my-4 justify-center">
                       <button

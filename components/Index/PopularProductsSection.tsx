@@ -35,7 +35,7 @@ const PopularProductsSection = () => {
               id={product.id}
               image={product.images[0]}
               title={product.title}
-              price={product.price}
+              price={product.prices[0].price}
             />
           );
         })}

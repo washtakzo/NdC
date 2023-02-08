@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import ProductItem from "./ProductItem";
 import useHttp from "../../hooks/useHttp";
 import { PRODUCTS_URL, CATEGORIE_URL } from "../../helper/url";
-import { Categories } from "../../helper/types";
+import { Categories, Product } from "../../helper/types";
 import LoadingSpinner from "../UI/LoadingSpinner";
 import ErrorBox from "../ErrorBox";
 
@@ -83,16 +83,26 @@ const ShopSection = ({ defaultCategorie, onCategorieChange }: Props) => {
       )}
       {!isLoading && !error && (
         <div className="grid grid-cols-1 md:grid-cols-2 md:w-[60%]">
-          {products.map(({ id, title, description, price, images }) => (
-            <ProductItem
-              key={id}
-              id={id}
-              title={title}
-              description={description}
-              price={price}
-              images={images}
-            />
-          ))}
+          {products.map(
+            ({
+              id,
+              title,
+              description,
+              prices,
+              images,
+              categorie,
+            }: Product) => (
+              <ProductItem
+                key={id}
+                id={id}
+                title={title}
+                description={description}
+                categorie={categorie}
+                prices={prices}
+                images={images}
+              />
+            )
+          )}
         </div>
       )}
     </section>
