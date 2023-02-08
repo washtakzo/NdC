@@ -53,28 +53,6 @@ const Admin = () => {
     setCategorie(categorie);
   };
 
-  const postProductHandlerWithImageData = async (data: any) => {
-    const { title, description, price, adminPassword } = data;
-
-    const formData = new FormData();
-    formData.append("title", title);
-    formData.append("description", description);
-    formData.append("categorie", categorie);
-    formData.append("price", price);
-    formData.append("adminPassword", adminPassword);
-    if (images) {
-      formData.append("image", images[0]);
-    }
-
-    try {
-      await sendRequest(PRODUCTS_URL || "", "POST", formData);
-    } catch (error: any) {
-      console.warn(error.message);
-    }
-
-    window.location.reload();
-  };
-
   const postProductHandlerWithImageURL = async (data: any) => {
     const { title, description, prices, adminPassword, images } = data;
     console.log(data);
@@ -270,8 +248,6 @@ const Admin = () => {
               )}
             </div>
           ))}
-
-          {/* <ImageUpload onLoadImage={setImages} /> */}
           <MediumButton type="submit">SUBMIT</MediumButton>
         </form>
       </section>
