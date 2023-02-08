@@ -16,7 +16,7 @@ const ProductDetailSection = ({ product }: Props) => {
   const stepQuantity = product.categorie === Categories.FAIRE_PART ? 10 : 1;
 
   const dispatch = useDispatch();
-  const inputRef = useRef<HTMLInputElement>(null);
+  const inputRef = useRef<any>(null);
   const [priceToDisplay, setPriceToDisplay] = useState<number>(
     getMatchingPrice(minimumQuantity, product.prices)
   );
