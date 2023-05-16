@@ -1,10 +1,10 @@
 import { Categories } from "../helper/types";
 
 const illustrationImageRight: string =
-  "https://www.etatcivil.info/wp-content/uploads/sites/7/2019/11/233-725-mariages-heterosexuels-homosexuels-celebres-2016_0_729_486.jpg";
+  "https://dcok7u9o4gc10.cloudfront.net/uploads/ckeditor/pictures/2204/content_shutterstock_714225325.jpg";
 
 const illustrationImageLeft: string =
-  "https://assets-global.website-files.com/5f7adad57379a3a39ba3975a/61f8ad3f264370487210f280_02DBA36B-7CD8-4098-9949-656528CAB285_1_201_a.jpeg";
+  "https://i.pinimg.com/736x/62/f0/7f/62f07fa3ff0ea730343d093a560e2ca5.jpg";
 
 const titre: string =
   "Noce de coton vous accompagne dans les moments les plus festif de votre vie";
