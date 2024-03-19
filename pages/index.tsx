@@ -14,13 +14,13 @@ import AnimatedBackground from "../components/UI/AnimatedBackground";
 //TODO: demander le num de telephone sur stripe
 
 export default function Home() {
-  return (
-    <div className="flex justify-center items-center w-[100%] h-[100vh] bg-slate-900 z-20 sticky">
-      <h1 className="text-red-400 font-semibold text-center">
-        Site en cours de développement...
-      </h1>
-    </div>
-  );
+  // return (
+  //   <div className="flex justify-center items-center w-[100%] h-[100vh] bg-slate-900 z-20 sticky">
+  //     <h1 className="text-red-400 font-semibold text-center">
+  //       Site en cours de développement...
+  //     </h1>
+  //   </div>
+  // );
 
   return (
     <>
