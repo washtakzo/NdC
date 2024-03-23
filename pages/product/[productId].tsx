@@ -10,12 +10,15 @@ import useHttp from "../../hooks/useHttp";
 import { PRODUCTS_URL } from "../../helper/url";
 import ErrorBox from "../../components/ErrorBox";
 import LoadingSpinner from "../../components/UI/LoadingSpinner";
+import { DUMMY_PRODUCTS } from "../../helper/dummy";
+import { isDevMode } from "../../helper/const";
+import { Product } from "../../helper/types";
 
 const ProductPage = () => {
   const router = useRouter();
   const productId = router.query.productId || "";
   const { isLoading, error, sendRequest } = useHttp();
-  const [product, setProduct] = React.useState();
+  const [product, setProduct] = React.useState<Product>();
 
   React.useEffect(() => {
     const fetchProduct = async () => {
@@ -24,7 +27,12 @@ const ProductPage = () => {
         setProduct(response.product);
       } catch (error) {}
     };
-    fetchProduct();
+    if (isDevMode) {
+      const foundProduct = DUMMY_PRODUCTS.find((p) => p.id === productId);
+      setProduct(foundProduct);
+    } else {
+      fetchProduct();
+    }
   }, [productId, sendRequest]);
 
   const NoProductFoundErrorJSX = (

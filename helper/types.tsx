@@ -1,9 +1,14 @@
+export type Price = {
+  quantity: number;
+  price: number;
+};
+
 export type Product = {
   id: string;
   title: string;
   description: string;
-  categorie: string;
-  prices: { quantity: number; price: number }[];
+  categorie: Categories;
+  prices: Price[];
   images: string[];
 };
 

@@ -5,6 +5,8 @@ import { PRODUCTS_URL, CATEGORIE_URL } from "../../helper/url";
 import { Categories, Product } from "../../helper/types";
 import LoadingSpinner from "../UI/LoadingSpinner";
 import ErrorBox from "../ErrorBox";
+import { DUMMY_PRODUCTS } from "../../helper/dummy";
+import { isDevMode } from "../../helper/const";
 
 type Props = {
   defaultCategorie: Categories;
@@ -12,7 +14,7 @@ type Props = {
 };
 
 const ShopSection = ({ defaultCategorie, onCategorieChange }: Props) => {
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState<Product[]>([]);
   const [categorie, setCategorie] = useState(defaultCategorie);
   const { isLoading, error, sendRequest } = useHttp();
 
@@ -36,11 +38,19 @@ const ShopSection = ({ defaultCategorie, onCategorieChange }: Props) => {
     } catch (error: any) {}
   }, [sendRequest, categorie]);
 
+  const setDummyProducts = () => {
+    setProducts(DUMMY_PRODUCTS);
+  };
+
   useEffect(() => {
-    if (categorie === Categories.ALL) {
-      fetchAllProducts();
+    if (isDevMode) {
+      setDummyProducts();
     } else {
-      fetchCategorieProducts();
+      if (categorie === Categories.ALL) {
+        fetchAllProducts();
+      } else {
+        fetchCategorieProducts();
+      }
     }
   }, [categorie, fetchAllProducts, fetchCategorieProducts]);
 

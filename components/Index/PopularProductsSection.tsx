@@ -3,9 +3,11 @@ import useHttp from "../../hooks/useHttp";
 import PopularProduct from "../PopularProduct";
 import { BASE_URL, PRODUCTS_URL } from "../../helper/url";
 import { Product } from "../../helper/types";
+import { isDevMode } from "../../helper/const";
+import { DUMMY_PRODUCTS } from "../../helper/dummy";
 
 const PopularProductsSection = () => {
-  const [popularProducts, setPopularProducts] = useState([]);
+  const [popularProducts, setPopularProducts] = useState<Product[]>([]);
   const { isLoading, error, sendRequest } = useHttp();
 
   //TODO:change the fetch to get popular products when API ok -
@@ -16,7 +18,11 @@ const PopularProductsSection = () => {
         setPopularProducts(response.products);
       } catch (error) {}
     };
-    fetchProduct();
+    if (isDevMode) {
+      setPopularProducts(DUMMY_PRODUCTS.slice(0, 4));
+    } else {
+      fetchProduct();
+    }
   }, []);
 
   return (

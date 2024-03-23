@@ -44,7 +44,6 @@ export const DUMMY_PRODUCTS: Product[] = [
     prices: [{ quantity: 1, price: 200.76 }],
     images: [
       "https://assets.website-files.com/601835c0c88eb62d2fa657a1/6019880417e04655dd17e50b_leisara-imZnpDXSNVA-unsplash.jpg",
-      "https://assets.website-files.com/601835c0c88eb62d2fa657a1/601990eb5a584185088fc2fe_kailey-sniffin-Ex0P6ldX384-unsplash.jpg",
     ],
   },
   {
