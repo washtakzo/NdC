@@ -1,11 +1,11 @@
-import { Product } from "./types";
+import { Categories, Product } from "./types";
 
 export const DUMMY_PRODUCTS: Product[] = [
   {
     id: "0id=)test",
     title: "Miam Perfume",
     description: "Description of the product here ...",
-    categorie: "fairpart",
+    categorie: Categories.FAIRE_PART,
     prices: [{ quantity: 1, price: 200.76 }],
     images: [
       "https://assets.website-files.com/601835c0c88eb62d2fa657a1/6019880417e04655dd17e50b_leisara-imZnpDXSNVA-unsplash.jpg",
@@ -15,7 +15,7 @@ export const DUMMY_PRODUCTS: Product[] = [
     id: "1",
     title: "FairPart Perfume",
     description: "Description of the product here ...",
-    categorie: "fairpart",
+    categorie: Categories.FAIRE_PART,
 
     prices: [{ quantity: 1, price: 200.76 }],
     images: [
@@ -27,7 +27,7 @@ export const DUMMY_PRODUCTS: Product[] = [
     id: "2",
     title: "Boite Flower Perfume",
     description: "Description of the product here ...",
-    categorie: "boite",
+    categorie: Categories.COFFRETS,
 
     prices: [{ quantity: 1, price: 200.76 }],
     images: [
@@ -39,7 +39,7 @@ export const DUMMY_PRODUCTS: Product[] = [
     id: "3",
     title: "FairPart Perfume Black",
     description: "Description of the product here ...",
-    categorie: "fairpart",
+    categorie: Categories.FAIRE_PART,
 
     prices: [{ quantity: 1, price: 200.76 }],
     images: [
@@ -50,7 +50,7 @@ export const DUMMY_PRODUCTS: Product[] = [
     id: "4",
     title: "Boite Flower Perfume White",
     description: "Description of the product here ...",
-    categorie: "boite",
+    categorie: Categories.COFFRETS,
 
     prices: [{ quantity: 1, price: 200.76 }],
     images: [
